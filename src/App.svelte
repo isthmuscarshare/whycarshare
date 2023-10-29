@@ -42,12 +42,16 @@
 	// DEMO-SPECIFIC CONFIG
 	// Constants
 	const datasets = ["region", "district"];
-	const topojson = "./data/geo_lad2021.json";
-	const mapstyle = "https://bothness.github.io/ons-basemaps/data/style-omt.json";
+	const topojson = "./data/geo_mad1.json";
+	const mapstyle = "https://raw.githubusercontent.com/ONSvisual/svelte-maps/main/dist/data/style-osm-grey.json" //"https://bothness.github.io/ons-basemaps/data/style-omt.json";
 	const mapbounds = {
 		uk: [
-			[-9, 49 ],
-			[ 2, 61 ]
+			[-90, 42 ],
+			[ -88, 44 ]
+		],
+		mad: [
+			[-88,40],
+			[-90,42]
 		]
 	};
 
@@ -234,39 +238,41 @@
 		});
 	});
 
-	getTopo(topojson, 'geog')
+	getTopo(topojson)
 	.then(geo => {
-		geo.features.sort((a, b) => a.properties.AREANM.localeCompare(b.properties.AREANM));
+		// geo.features.sort((a, b) => a.properties.AREANM.localeCompare(b.properties.AREANM));
 		geojson = geo;
 	});
 </script>
 
 <ONSHeader filled={true} center={false} />
 
-<Header bgcolor="#206095" bgfixed={true} theme="dark" center={false} short={true}>
-	<h1>This is the title of the article</h1>
-	<p class="text-big" style="margin-top: 5px">
-		This is a short text description of the article that might take up a couple of lines
+<Header bgimage="./img/bg-image3.jpg" bgfixed={true} theme="light" center={false} short={true}>
+	<h1>Bringing Better Carshare to Madison	</h1>
+	<p class="text-big" style="margin-top: 25px; background-color:rgba(204, 204, 204, 0.5);padding:1%;" >
+		We're building a new carshare solution, so you can get where you're going, spend half as much on driving, and help make our city a more walkable, human-friendly place to live.
 	</p>
-	<p style="margin-top: 20px">
+	<!-- <p style="margin-top: 20px">
 		DD MMM YYYY
-	</p>
-	<p>
+	</p> -->
+	<!-- <p>
 		<Toggle label="Animation {animation ? 'on' : 'off'}" mono={true} bind:checked={animation}/>
-	</p>
-	<div style="margin-top: 90px;">
-		<Arrow color="white" {animation}>Scroll to begin</Arrow>
+	</p> -->
+	<div style="margin-top: 40px; text-align:center;">
+		<a href="#start">
+			<Arrow color="white" {animation}><span style="background-color:rgba(204, 204, 204, 0.5);padding:5px;">Learn more</span></Arrow>
+		</a>
 	</div>
 </Header>
 
-<Filler theme="lightblue" short={true} wide={true} center={false}>
+<!-- <Filler theme="lightblue" short={true} wide={true} center={false}>
 	<p class="text-big">
 		This is a large, left-aligned text caption
 	</p>
-</Filler>
+</Filler> -->
 
 <Section>
-	<h2>This is a section title</h2>
+	<h2 id="start">This is a section title</h2>
 	<p>
 		This is a short paragraph of text to demonstrate the standard "medium" column width, font size and line spacing of the template.
 	</p>
@@ -286,6 +292,114 @@
 		Below is an embedded chart. It is set to the same width as the column, "medium" (680px), but could also be "narrow" (540px), "wide" (980px) or "full" width. All options are responsive to fit the width of narrow screens.
 	</p>
 </Section>
+
+<Section>
+	<h2>This is a dynamic map section</h2>
+	<p class="mb">
+		The map below will respond to the captions as you scroll down. The scroller is not set to splitscreen, so captions are placed over the map on any screen size.
+	</p>
+</Section>
+
+{#if geojson && data.district.indicators}
+<Scroller {threshold} bind:id={id['map']}>
+	<div slot="background">
+		<figure>
+			<div class="col-full height-full">
+				<Map id="map1" style={mapstyle} bind:map interactive={false} location={{bounds: [[-89, 43],[-89, 43.5 ]]}}>
+					<MapSource
+					  id="lad"
+					  type="geojson"
+					  data={geojson}
+					  promoteId="AREACD"
+					  maxzoom={13}>
+					  <MapLayer
+					  	id="lad-fill"
+							idKey="code"
+							colorKey={mapKey + "_color"}
+					  	data={data.district.indicators}
+					  	type="fill"
+							select {selected} on:select={doSelect} clickIgnore={!explore}
+							hover {hovered} on:hover={doHover}
+							highlight highlighted={mapHighlighted}
+					  	paint={{
+					  		'fill-color': ['case',
+					  			['!=', ['feature-state', 'color'], null], ['feature-state', 'color'],
+					  			'rgba(255, 255, 255, 0)'
+					  		],
+					  		'fill-opacity': 0.7
+					  	}}>
+								<MapTooltip content={
+									hovered ? `${metadata.district.lookup[hovered].name}<br/><strong>${data.district.indicators.find(d => d.code == hovered)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
+								}/>
+							</MapLayer>
+						<MapLayer
+					  	id="lad-line"
+					  	type="line"
+					  	paint={{
+					  		'line-color': ['case',
+					  			['==', ['feature-state', 'hovered'], true], 'orange',
+					  			['==', ['feature-state', 'selected'], true], 'black',
+					  			['==', ['feature-state', 'highlighted'], true], 'black',
+					  			'rgba(255,255,255,0)'
+					  		],
+					  		'line-width': 2
+					  	}}
+				    /> 
+				  </MapSource>
+				</Map>
+			</div>
+		</figure>
+	</div>
+
+	<div slot="foreground">
+		<section data-id="map01">
+			<div class="col-medium">
+				<p>
+					This map shows <strong>population density</strong> by district. Districts are coloured from <Em color={colors.seq[0]}>least dense</Em> to <Em color={colors.seq[4]}>most dense</Em>. You can hover to see the district name and density.
+				</p>
+			</div>
+		</section>
+		<section data-id="map02">
+			<div class="col-medium">
+				<p>
+					The map now shows <strong>median age</strong>, from <Em color={colors.seq[0]}>youngest</Em> to <Em color={colors.seq[4]}>oldest</Em>.
+				</p>
+			</div>
+		</section>
+		<section data-id="map03">
+			<div class="col-medium">
+				<!-- This gets the data object for the district with the oldest median age -->
+				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
+				<p>
+					The map is now zoomed on <Em color={district.age_med_color}>{district.name}</Em>, the district with the oldest median age, {district.age_med} years.
+				</p>
+				{/each}
+			</div>
+		</section>
+		<section data-id="map04">
+			<div class="col-medium">
+				<h3>Select a district</h3>
+				<p>Use the selection box below or click on the map to select and zoom to a district.</p>
+				{#if geojson}
+					<p>
+						<!-- svelte-ignore a11y-no-onchange -->
+						<select bind:value={selected} on:change={() => fitById(selected)}>
+							<option value={null}>Select one</option>
+							{#each geojson.features as place}
+								<option value={place.properties.AREACD}>
+									{place.properties.AREANM}
+								</option>
+							{/each}
+						</select>
+					</p>
+				{/if}
+			</div>
+		</section>
+	</div>
+</Scroller>
+{/if}
+
+<Divider />
 
 {#if data.region.indicators}
 <Media
@@ -462,114 +576,6 @@
 		{/if}
 	</div>
 </Media>
-
-<Divider />
-
-<Section>
-	<h2>This is a dynamic map section</h2>
-	<p class="mb">
-		The map below will respond to the captions as you scroll down. The scroller is not set to splitscreen, so captions are placed over the map on any screen size.
-	</p>
-</Section>
-
-{#if geojson && data.district.indicators}
-<Scroller {threshold} bind:id={id['map']}>
-	<div slot="background">
-		<figure>
-			<div class="col-full height-full">
-				<Map style={mapstyle} bind:map interactive={false} location={{bounds: mapbounds.uk}}>
-					<MapSource
-					  id="lad"
-					  type="geojson"
-					  data={geojson}
-					  promoteId="AREACD"
-					  maxzoom={13}>
-					  <MapLayer
-					  	id="lad-fill"
-							idKey="code"
-							colorKey={mapKey + "_color"}
-					  	data={data.district.indicators}
-					  	type="fill"
-							select {selected} on:select={doSelect} clickIgnore={!explore}
-							hover {hovered} on:hover={doHover}
-							highlight highlighted={mapHighlighted}
-					  	paint={{
-					  		'fill-color': ['case',
-					  			['!=', ['feature-state', 'color'], null], ['feature-state', 'color'],
-					  			'rgba(255, 255, 255, 0)'
-					  		],
-					  		'fill-opacity': 0.7
-					  	}}>
-								<MapTooltip content={
-									hovered ? `${metadata.district.lookup[hovered].name}<br/><strong>${data.district.indicators.find(d => d.code == hovered)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
-								}/>
-							</MapLayer>
-						<MapLayer
-					  	id="lad-line"
-					  	type="line"
-					  	paint={{
-					  		'line-color': ['case',
-					  			['==', ['feature-state', 'hovered'], true], 'orange',
-					  			['==', ['feature-state', 'selected'], true], 'black',
-					  			['==', ['feature-state', 'highlighted'], true], 'black',
-					  			'rgba(255,255,255,0)'
-					  		],
-					  		'line-width': 2
-					  	}}
-				    />
-				  </MapSource>
-				</Map>
-			</div>
-		</figure>
-	</div>
-
-	<div slot="foreground">
-		<section data-id="map01">
-			<div class="col-medium">
-				<p>
-					This map shows <strong>population density</strong> by district. Districts are coloured from <Em color={colors.seq[0]}>least dense</Em> to <Em color={colors.seq[4]}>most dense</Em>. You can hover to see the district name and density.
-				</p>
-			</div>
-		</section>
-		<section data-id="map02">
-			<div class="col-medium">
-				<p>
-					The map now shows <strong>median age</strong>, from <Em color={colors.seq[0]}>youngest</Em> to <Em color={colors.seq[4]}>oldest</Em>.
-				</p>
-			</div>
-		</section>
-		<section data-id="map03">
-			<div class="col-medium">
-				<!-- This gets the data object for the district with the oldest median age -->
-				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
-				<p>
-					The map is now zoomed on <Em color={district.age_med_color}>{district.name}</Em>, the district with the oldest median age, {district.age_med} years.
-				</p>
-				{/each}
-			</div>
-		</section>
-		<section data-id="map04">
-			<div class="col-medium">
-				<h3>Select a district</h3>
-				<p>Use the selection box below or click on the map to select and zoom to a district.</p>
-				{#if geojson}
-					<p>
-						<!-- svelte-ignore a11y-no-onchange -->
-						<select bind:value={selected} on:change={() => fitById(selected)}>
-							<option value={null}>Select one</option>
-							{#each geojson.features as place}
-								<option value={place.properties.AREACD}>
-									{place.properties.AREANM}
-								</option>
-							{/each}
-						</select>
-					</p>
-				{/if}
-			</div>
-		</section>
-	</div>
-</Scroller>
-{/if}
 
 <Divider />
 

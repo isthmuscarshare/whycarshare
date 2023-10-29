@@ -21,11 +21,10 @@ export async function getData(url) {
   return data;
 }
 
-export async function getTopo(url, layer) {
+export async function getTopo(url) {
   let response = await fetch(url);
   let json = await response.json();
-  let geojson = await feature(json, layer);
-  return geojson;
+  return json;
 }
 
 export function getColor(value, breaks, colors) {

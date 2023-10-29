@@ -9,8 +9,8 @@
 
 <nav style="border-bottom-color: {themes[theme]['muted']}; {filled ? 'background-color: ' +  themes[theme]['background'] + ';' : ''}">
   <div class="col-wide middle" class:center>
-		<a href="https://www.ons.gov.uk/">
-			<picture>
+		<a href="/" style="text-decoration:none;">
+			<!-- <picture>
 				{#if theme == 'dark'}
 				<img src="./img/ons-logo-neg-en.svg" alt="Office for National Statistics">
 				{:else if filled == true}
@@ -18,7 +18,8 @@
 				{:else}
 				<img src="./img/ons-logo-black-en.svg" alt="Office for National Statistics">
 				{/if}
-			</picture>
+			</picture> -->
+			Down The Block Carshare
 		</a>
   </div>
 </nav>
