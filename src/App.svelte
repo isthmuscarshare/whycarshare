@@ -73,7 +73,7 @@
 	let yKey = null; // yKey for scatter chart
 	let zKey = null; // zKey (color) for scatter chart
 	let rKey = null; // rKey (radius) for scatter chart
-	let mapKey = "density"; // Key for data to be displayed on map
+	let mapKey = "B08201002"; // Key for data to be displayed on map
 	let explore = false; // Allows chart/map interactivity to be toggled on/off
 
 	// FUNCTIONS (INCL. SCROLLER ACTIONS)
