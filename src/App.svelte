@@ -57,6 +57,7 @@
 
 	// Data
 	let data = {district: {}, region: {}};
+	let subdata = [];
 	let metadata = {district: {}, region: {}};
 	let geojson;
 
@@ -96,9 +97,9 @@
 	}
 	function fitById(id) {
 		if (geojson && id) {
-			let feature = geojson.features.find(d => d.properties.AREACD == id);
-			let bounds = bbox(feature.geometry);
-			fitBounds(bounds);
+			// let feature = geojson.features.find(d => d.properties.AREACD == id);
+			// let bounds = bbox(feature.geometry);
+			// fitBounds(bounds);
 		}
 	}
 
@@ -234,14 +235,34 @@
 					});
 				});
 			});
-			data[geo].timeseries = timeseries;
+			data[geo].timeseries = timeseries;	
 		});
 	});
-
+	
 	getTopo(topojson)
 	.then(geo => {
 		// geo.features.sort((a, b) => a.properties.AREANM.localeCompare(b.properties.AREANM));
+		
 		geojson = geo;
+		console.log(geojson['features'])
+		let vals = geojson['features'].map(d => d.properties['B08201001']).sort((a, b) => a - b);
+		let len = vals.length;
+		let breaks = [
+			vals[0],
+			vals[Math.floor(len * 0.2)],
+			vals[Math.floor(len * 0.4)],
+			vals[Math.floor(len * 0.6)],
+			vals[Math.floor(len * 0.8)],
+			vals[len - 1]
+		];
+		console.log(breaks)
+		console.log(vals)
+		geojson['features'].forEach(d => {
+			subdata.push({'geoid':d.properties.geoid,
+						  'color': getColor(d.properties['B08201001'], breaks, colors.seq5)})
+		});
+		console.log(subdata)
+		
 	});
 </script>
 
@@ -272,193 +293,25 @@
 </Filler> -->
 
 <Section>
-	<h2 id="start">This is a section title</h2>
+	<h2 id="start">Save Money, Help Build a Better City</h2>
 	<p>
-		This is a short paragraph of text to demonstrate the standard "medium" column width, font size and line spacing of the template.
+		The average car owner spends <a href="https://www.moneygeek.com/insurance/auto/analysis/costs-of-car-ownership/">$10,000</a> per year.  And the typical car is sitting parked <a href="https://usa.streetsblog.org/2016/03/10/its-true-the-typical-car-is-parked-95-percent-of-the-time">95%</a> of the time.
 	</p>
 	<p>
-		This is a second short paragraph of text to demonstrate the size of the paragraph spacing in the template.
+		We want to bring all the 
 	</p>
 	<blockquote class="text-indent">
-		"This is an example of a large embedded quotation."&mdash;A. Person
+		"The automobile city is the anti-city that annihilates the city wherever it collides with it."&mdash;Lewis Mumford, The City in History
 	</blockquote>
 </Section>
 
 <Divider/>
 
-<Section>
-	<h2>Embedded charts or media</h2>
-	<p>
-		Below is an embedded chart. It is set to the same width as the column, "medium" (680px), but could also be "narrow" (540px), "wide" (980px) or "full" width. All options are responsive to fit the width of narrow screens.
-	</p>
-</Section>
 
 <Section>
-	<h2>This is a dynamic map section</h2>
-	<p class="mb">
-		The map below will respond to the captions as you scroll down. The scroller is not set to splitscreen, so captions are placed over the map on any screen size.
-	</p>
-</Section>
-
-{#if geojson && data.district.indicators}
-<Scroller {threshold} bind:id={id['map']}>
-	<div slot="background">
-		<figure>
-			<div class="col-full height-full">
-				<Map id="map1" style={mapstyle} bind:map interactive={false} location={{bounds: [[-89, 43],[-89, 43.5 ]]}}>
-					<MapSource
-					  id="lad"
-					  type="geojson"
-					  data={geojson}
-					  promoteId="AREACD"
-					  maxzoom={13}>
-					  <MapLayer
-					  	id="lad-fill"
-							idKey="code"
-							colorKey={mapKey + "_color"}
-					  	data={data.district.indicators}
-					  	type="fill"
-							select {selected} on:select={doSelect} clickIgnore={!explore}
-							hover {hovered} on:hover={doHover}
-							highlight highlighted={mapHighlighted}
-					  	paint={{
-					  		'fill-color': ['case',
-					  			['!=', ['feature-state', 'color'], null], ['feature-state', 'color'],
-					  			'rgba(255, 255, 255, 0)'
-					  		],
-					  		'fill-opacity': 0.7
-					  	}}>
-								<MapTooltip content={
-									hovered ? `${metadata.district.lookup[hovered].name}<br/><strong>${data.district.indicators.find(d => d.code == hovered)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
-								}/>
-							</MapLayer>
-						<MapLayer
-					  	id="lad-line"
-					  	type="line"
-					  	paint={{
-					  		'line-color': ['case',
-					  			['==', ['feature-state', 'hovered'], true], 'orange',
-					  			['==', ['feature-state', 'selected'], true], 'black',
-					  			['==', ['feature-state', 'highlighted'], true], 'black',
-					  			'rgba(255,255,255,0)'
-					  		],
-					  		'line-width': 2
-					  	}}
-				    /> 
-				  </MapSource>
-				</Map>
-			</div>
-		</figure>
-	</div>
-
-	<div slot="foreground">
-		<section data-id="map01">
-			<div class="col-medium">
-				<p>
-					This map shows <strong>population density</strong> by district. Districts are coloured from <Em color={colors.seq[0]}>least dense</Em> to <Em color={colors.seq[4]}>most dense</Em>. You can hover to see the district name and density.
-				</p>
-			</div>
-		</section>
-		<section data-id="map02">
-			<div class="col-medium">
-				<p>
-					The map now shows <strong>median age</strong>, from <Em color={colors.seq[0]}>youngest</Em> to <Em color={colors.seq[4]}>oldest</Em>.
-				</p>
-			</div>
-		</section>
-		<section data-id="map03">
-			<div class="col-medium">
-				<!-- This gets the data object for the district with the oldest median age -->
-				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
-				<p>
-					The map is now zoomed on <Em color={district.age_med_color}>{district.name}</Em>, the district with the oldest median age, {district.age_med} years.
-				</p>
-				{/each}
-			</div>
-		</section>
-		<section data-id="map04">
-			<div class="col-medium">
-				<h3>Select a district</h3>
-				<p>Use the selection box below or click on the map to select and zoom to a district.</p>
-				{#if geojson}
-					<p>
-						<!-- svelte-ignore a11y-no-onchange -->
-						<select bind:value={selected} on:change={() => fitById(selected)}>
-							<option value={null}>Select one</option>
-							{#each geojson.features as place}
-								<option value={place.properties.AREACD}>
-									{place.properties.AREANM}
-								</option>
-							{/each}
-						</select>
-					</p>
-				{/if}
-			</div>
-		</section>
-	</div>
-</Scroller>
-{/if}
-
-<Divider />
-
-{#if data.region.indicators}
-<Media
-	col="medium"
-	caption="Source: ONS mid-year population estimates."
->
-	<div class="chart-sml">
-		<BarChart
-			data={[...data.region.indicators].sort((a, b) => a.pop - b.pop)}
-			xKey="pop" yKey="name"
-			snapTicks={false}
-			xFormatTick={d => (d / 1e6)} xSuffix="m"
-			height={350} padding={{top: 0, bottom: 15, left: 140, right: 0}}
-			area={false} title="Population by region/nation, 2020"/>
-	</div>
-</Media>
-{/if}
-
-<Divider/>
-
-<Section>
-	<h2>Gridded charts or media</h2>
+	<h2>Why Madison, Why Now?</h2>
 	<p>
-		Below is a grid that can contain charts or any other kind of visual media. The grid can fit in a medium, wide or full-width column, and the media width itself can be narrow (min 200px), medium (min 300px), wide (min 500px) or full-width. The grid is responsive, and will re-flow on smaller screens.
-	</p>
-</Section>
-
-{#if data.region.timeseries && data.region.indicators}
-<Media
-	col="wide"
-	grid="narrow" gap={20}
-	caption="Source: ONS mid-year population estimates."
->
-	{#each [...data.region.indicators].sort((a, b) => b.pop - a.pop) as region}
-	<div class="chart-sml">
-		<LineChart
-			data={data.region.timeseries}
-			xKey="year" yKey="value" zKey="code"
-			color="lightgrey"
-			lineWidth={1} xTicks={2} snapTicks={false}
-			yFormatTick={d => (d / 1e6)} ySuffix="m"
-			height={200} padding={{top: 0, bottom: 20, left: 30, right: 15}}
-			selected={region.code}
-			area={false} title={region.name}/>
-	</div>
-	{/each}
-</Media>
-{/if}
-
-<Divider />
-
-<Section>
-	<h2>This is a dynamic chart section</h2>
-	<p>
-		The chart below will respond to the captions as you scroll down. The "Scroller" component is
-		set to "splitscreen" mode, which means the captions will be on the left side on larger screens.
-	</p>
-	<p>
-		The interactions are via Javascript functions that are called when each caption scrolls into view.
+		We recently surveyed Madison neighbors and found that they are ready to take action to change our city, and save time and money doing it.
 	</p>
 </Section>
 
@@ -543,46 +396,106 @@
 
 <Divider />
 
-<Section>
-	<h2>This is a full-width chart demo</h2>
-	<p>
-		Below is an example of a media grid where the column with is set to "full". This allows for full width images and charts.
-	</p>
-	<p>
 
+<Section>
+	<h2>Our Vision</h2>
+	<p>
+		What does this look like in our city.
 	</p>
 </Section>
 
-<Media
-	col="full"
-	height={600}
-	caption='This is an optional caption for the above chart or media. It can contain HTML code and <a href="#">hyperlinks</a>, and wrap onto multiple lines.'
->
-	<div class="chart-full">
-		{#if data.district.timeseries}
-		<LineChart
-			data={data.district.timeseries}
-			padding={{left: 50, right: 150, top: 0, bottom: 0}}
-			height="500px"
-			xKey="year" yKey="value" zKey="code"
-			color="lightgrey" lineWidth={1}
-			yFormatTick={d => (d/1e6).toFixed(1)} ySuffix="m"
-			select {selected} on:select={doSelect}
-			hover {hovered} on:hover={doHover}
-			highlighted={chartHighlighted}
-			colorSelect="#206095" colorHighlight="#999"
-			area={false} title="Mid-year population by district, 2001 to 2020"
-			labels labelKey="name"/>
-		{/if}
+{#if geojson && data.district.indicators}
+<Scroller {threshold} bind:id={id['map']}>
+	<div slot="background">
+		<figure>
+			<div class="col-full height-full">  
+				<!-- location={{bounds: [[-89.75, 42.95],[-89, 43.2 ]]} -->
+				<Map id="map1" style={mapstyle} bind:map interactive={false} zoom={13} center={[-89.45, 43.1]}>
+					<MapSource
+					  id="lad"
+					  type="geojson"
+					  data={geojson}
+					  promoteId="geoid"
+					  maxzoom={13}>
+					  <MapLayer
+					  	id="lad-fill"
+						idKey="geoid"
+						colorKey="color"
+					  	data={subdata}
+					  	type="fill"
+						select {selected} on:select={doSelect} clickIgnore={!explore}
+						hover {hovered} on:hover={doHover}
+						highlight highlighted={mapHighlighted}
+						paint={{
+							'fill-color':  ['feature-state', 'color'],
+							'fill-opacity': 0.7
+						}}
+					  	>
+								<!-- <MapTooltip content={
+									hovered ? `${metadata.district.lookup[hovered].name}<br/><strong>${data.district.indicators.find(d => d.code == hovered)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
+								}/> -->
+							</MapLayer>
+				  </MapSource>
+				</Map>
+			</div>
+		</figure>
 	</div>
-</Media>
+
+	<div slot="foreground">
+		<section data-id="map01">
+			<div class="col-medium">
+				<p>
+					This map shows <strong>population density</strong> by district. Districts are coloured from <Em color={colors.seq[0]}>least dense</Em> to <Em color={colors.seq[4]}>most dense</Em>. You can hover to see the district name and density.
+				</p>
+			</div>
+		</section>
+		<section data-id="map02">
+			<div class="col-medium">
+				<p>
+					The map now shows <strong>median age</strong>, from <Em color={colors.seq[0]}>youngest</Em> to <Em color={colors.seq[4]}>oldest</Em>.
+				</p>
+			</div>
+		</section>
+		<section data-id="map03">
+			<div class="col-medium">
+				<!-- This gets the data object for the district with the oldest median age -->
+				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
+				<p>
+					The map is now zoomed on <Em color={district.age_med_color}>{district.name}</Em>, the district with the oldest median age, {district.age_med} years.
+				</p>
+				{/each}
+			</div>
+		</section>
+		<section data-id="map04">
+			<div class="col-medium">
+				<h3>Select a district</h3>
+				<p>Use the selection box below or click on the map to select and zoom to a district.</p>
+				{#if geojson}
+					<p>
+						<!-- svelte-ignore a11y-no-onchange -->
+						<select bind:value={selected} on:change={() => fitById(selected)}>
+							<option value={null}>Select one</option>
+							{#each geojson.features as place}
+								<option value={place.properties.AREACD}>
+									{place.properties.AREANM}
+								</option>
+							{/each}
+						</select>
+					</p>
+				{/if}
+			</div>
+		</section>
+	</div>
+</Scroller>
+{/if}
+
 
 <Divider />
 
 <Section>
-	<h2>How to use this template</h2>
+	<h2>The nitty gritty details</h2>
 	<p>
-		You can find the source code and documentation on how to use this template in <a href="https://github.com/ONSvisual/svelte-scrolly/" target="_blank">this Github repo</a>.
+		Here we include lots of details about how insurance and pricing work, how and where we are rolling this out in Tenney Lapham in 2024, and why you should get in touch.
 	</p>
 </Section>
 
