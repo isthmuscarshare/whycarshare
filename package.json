@@ -36,6 +36,7 @@
     "topojson-client": "^3.1.0"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.0"
+    "sirv-cli": "^1.0.0",
+    "svelte-d3-cloud": "^0.0.2"
   }
 }

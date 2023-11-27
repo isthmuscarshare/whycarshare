@@ -46,8 +46,8 @@
 	const mapstyle = "https://raw.githubusercontent.com/ONSvisual/svelte-maps/main/dist/data/style-osm-grey.json" //"https://bothness.github.io/ons-basemaps/data/style-omt.json";
 	const mapbounds = {
 		uk: [
-			[-90, 42 ],
-			[ -88, 44 ]
+			[-89.45, 43.0 ],
+			[ -89.35, 43.15 ]
 		],
 		mad: [
 			[-88,40],
@@ -56,10 +56,74 @@
 	};
 
 	// Data
+	let linechart = {}
 	let data = {district: {}, region: {}};
 	let subdata = [];
 	let metadata = {district: {}, region: {}};
 	let geojson;
+
+	let words1 = [
+	{ text: "maintenance", count: 12 },
+	{ text: "parking", count: 12 },
+	{ text: "cost", count: 11 },
+	{ text: "driving", count: 5 },
+	{ text: "emissions", count: 3 },
+	{ text: "pollution", count: 3 },
+	{ text: "drivers", count: 2 },
+	{ text: "guilt", count: 2 },
+	{ text: "insurance", count: 2 },
+	{ text: "environmental", count: 2 },
+	{ text: "space", count: 2 },
+	{ text: "expense", count: 2 },
+	{ text: "street", count: 2 },
+	];
+
+	let words2 = [
+	{ text: "maintenance", count: 12 },
+	{ text: "parking", count: 12 },
+	{ text: "cost", count: 11 },
+	{ text: "driving", count: 5 },
+	];
+
+	let start_year = 2024
+	let years = 10
+	let new_car_price = 48000
+	let used_car_price = 34000
+	let car_cpm = 0.5
+	let zipcar_memb = 50
+	let zipcar_cpm = 1
+	let downtheblock_memb = 500
+	let downtheblock_cpm = 0.75
+	let selected_chart
+
+	function generate_cost_data(start_year, years, miles_per_year, new_car_price, car_cost_per_mile, zipcar_membership, zipcar_cost_per_mile, downtheblock_membership, downtheblock_cost_per_mile) {
+		let ret = []
+		for (let i=0; i < years; i ++){
+			ret.push({year: start_year+i, value: new_car_price+(i+1)*miles_per_year*car_cost_per_mile, group: 'New Car'})
+		}
+		
+		// for (let i=0; i < years; i ++){
+		// 	ret.push({year: start_year+i, value: used_car_price+(i+1)*miles_per_year*car_cost_per_mile, group: 'used car price'})
+		// }
+	
+		for (let i=0; i < years; i ++){
+			ret.push({year: start_year+i, value: (i+1)*(zipcar_membership+miles_per_year*zipcar_cost_per_mile), group: 'Zipcar'})
+		}
+	
+		for (let i=0; i < years; i ++){
+			ret.push({year: start_year+i, value: downtheblock_membership+ (i+1)*(miles_per_year*downtheblock_cost_per_mile), group: 'Down The Block'})
+		}
+		return ret
+	}
+
+	let mileage_choices = [{'ind':0,'val':1000}, {'ind':1,'val':5000}, {'ind':2,'val':10000}]
+	let mydata = []
+	for (let m in mileage_choices){
+		mydata.push(generate_cost_data(start_year,years,mileage_choices[m].val,new_car_price,car_cpm,zipcar_memb,zipcar_cpm,downtheblock_memb,downtheblock_cpm))
+	}
+	let mileage_selected = 1
+
+	// let eco_data = [{mode: 'car',value: 18},{mode:'carshare',value: 15}]
 
 	// Element bindings
 	let map = null; // Bound to mapbox 'map' instance once initialised
@@ -77,11 +141,14 @@
 	let mapKey = "B08201002"; // Key for data to be displayed on map
 	let explore = false; // Allows chart/map interactivity to be toggled on/off
 
+	let image_image = "./img/utopia2.jpg"
+
+	let words = words1
+
 	// FUNCTIONS (INCL. SCROLLER ACTIONS)
 
 	// Functions for chart and map on:select and on:hover events
 	function doSelect(e) {
-		console.log(e);
 		selected = e.detail.id;
 		if (e.detail.feature) fitById(selected); // Fit map if select event comes from map
 	}
@@ -139,13 +206,14 @@
 				zKey = null;
 				rKey = null;
 				explore = false;
+				selected_chart = null;
 			},
 			chart02: () => {
 				xKey = "area";
 				yKey = null;
 				zKey = null;
 				rKey = "pop";
-				explore = false;
+				selected_chart="New Car";
 			},
 			chart03: () => {
 				xKey = "area";
@@ -153,6 +221,7 @@
 				zKey = null;
 				rKey = "pop";
 				explore = false;
+				selected_chart="Down The Block";
 			},
 			chart04: () => {
 				xKey = "area";
@@ -160,6 +229,7 @@
 				zKey = "parent_name";
 				rKey = "pop";
 				explore = false;
+				selected_chart = null;
 			},
 			chart05: () => {
 				xKey = "area";
@@ -167,6 +237,22 @@
 				zKey = null;
 				rKey = "pop";
 				explore = true;
+			}
+		},
+		image: { // Actions for <Scroller/> with id="map"
+			image01: () => {
+				image_image = "./img/utopia2.jpg"
+			},
+			image02: () => {
+				image_image = "./img/utopia1.jpg"
+			}
+		},
+		words: { // Actions for <Scroller/> with id="map"
+			words01: () => {
+				words = words1
+			},
+			words02: () => {
+				words = words2
 			}
 		}
 	};
@@ -244,7 +330,6 @@
 		// geo.features.sort((a, b) => a.properties.AREANM.localeCompare(b.properties.AREANM));
 		
 		geojson = geo;
-		console.log(geojson['features'])
 		let vals = geojson['features'].map(d => d.properties['B08201001']).sort((a, b) => a - b);
 		let len = vals.length;
 		let breaks = [
@@ -255,23 +340,26 @@
 			vals[Math.floor(len * 0.8)],
 			vals[len - 1]
 		];
-		console.log(breaks)
-		console.log(vals)
 		geojson['features'].forEach(d => {
 			subdata.push({'geoid':d.properties.geoid,
 						  'color': getColor(d.properties['B08201001'], breaks, colors.seq5)})
 		});
-		console.log(subdata)
 		
 	});
+
+import WordCloud from "svelte-d3-cloud";
+
+
+
 </script>
+
 
 <ONSHeader filled={true} center={false} />
 
-<Header bgimage="./img/bg-image3.jpg" bgfixed={true} theme="light" center={false} short={true}>
+<Header bgimage="./img/bg-image4.jpg" bgfixed={true} theme="light" center={false} short={true}>
 	<h1>Bringing Better Carshare to Madison	</h1>
-	<p class="text-big" style="margin-top: 25px; background-color:rgba(204, 204, 204, 0.5);padding:1%;" >
-		We're building a new carshare solution, so you can get where you're going, spend half as much on driving, and help make our city a more walkable, human-friendly place to live.
+	<p class="text-big" style="margin-top: 25px; background-color:rgba(204, 204, 204, 0.9);padding:1%;" >
+		We're building a new carshare solution, so you can get where you're going, save money, and help make our city a more walkable, human-friendly place to live.
 	</p>
 	<!-- <p style="margin-top: 20px">
 		DD MMM YYYY
@@ -280,9 +368,13 @@
 		<Toggle label="Animation {animation ? 'on' : 'off'}" mono={true} bind:checked={animation}/>
 	</p> -->
 	<div style="margin-top: 40px; text-align:center;">
-		<a href="#start">
-			<Arrow color="white" {animation}><span style="background-color:rgba(204, 204, 204, 0.5);padding:5px;">Learn more</span></Arrow>
-		</a>
+		
+			<Arrow color="white" {animation}>
+				<a href="#start"><span style="background-color:rgba(204, 204, 204, 0.9);padding:5px;">Why carshare?</span></a>
+				<a href="#signup"><span style="background-color:rgba(204, 204, 204, 0.9);padding:5px;">Sign up</span></a>
+			</Arrow>
+		
+		
 	</div>
 </Header>
 
@@ -293,52 +385,42 @@
 </Filler> -->
 
 <Section>
-	<h2 id="start">Save Money, Help Build a Better City</h2>
+	<h2 id="start">Why Carshare? Save Money</h2>
 	<p>
-		The average car owner spends <a href="https://www.moneygeek.com/insurance/auto/analysis/costs-of-car-ownership/">$10,000</a> per year.  And the typical car is sitting parked <a href="https://usa.streetsblog.org/2016/03/10/its-true-the-typical-car-is-parked-95-percent-of-the-time">95%</a> of the time.
+		The average car owner spends <a href="https://www.moneygeek.com/insurance/auto/analysis/costs-of-car-ownership/">$10,000</a> per year on their car.  And the typical car is sitting parked <a href="https://usa.streetsblog.org/2016/03/10/its-true-the-typical-car-is-parked-95-percent-of-the-time">95%</a> of the time.
 	</p>
 	<p>
-		We want to bring all the 
+		We want to bring all the convenience of owning a car, with less hassle, cost, and environmental impact.  That's why we're building our carshare solution. Read on to learn more.
 	</p>
-	<blockquote class="text-indent">
-		"The automobile city is the anti-city that annihilates the city wherever it collides with it."&mdash;Lewis Mumford, The City in History
-	</blockquote>
 </Section>
 
 <Divider/>
 
-
-<Section>
-	<h2>Why Madison, Why Now?</h2>
-	<p>
-		We recently surveyed Madison neighbors and found that they are ready to take action to change our city, and save time and money doing it.
-	</p>
-</Section>
-
 <Scroller {threshold} bind:id={id['chart']} splitscreen={true}>
 	<div slot="background">
 		<figure>
-			<div class="col-wide height-full">
-				{#if data.district.indicators && metadata.region.lookup}
-					<div class="chart">
-						<ScatterChart
-							height="calc(100vh - 150px)"
-							data={data.district.indicators.map(d => ({...d, parent_name: metadata.region.lookup[d.parent].name}))}
-							colors={explore ? ['lightgrey'] : colors.cat}
-							{xKey} {yKey} {zKey} {rKey} idKey="code" labelKey="name"
-							r={[3,10]}
-							xScale="log"
-							xTicks={[10, 100, 1000, 10000]} xFormatTick={d => d.toLocaleString()}
-							xSuffix=" sq.km"
-							yFormatTick={d => d.toLocaleString()}
-							legend={zKey != null} labels
-							select={explore} selected={explore ? selected : null} on:select={doSelect}
-							hover {hovered} on:hover={doHover}
-							highlighted={explore ? chartHighlighted : []}
-							colorSelect="#206095" colorHighlight="#999" overlayFill
-							{animation}/>
-					</div>
-				{/if}
+			<div class="col-wide">
+				<div class="chart">
+					<LineChart
+						height="calc(100vh - 300px)"
+						bind:data={mydata[mileage_selected]}
+						xKey="year" yKey="value" zKey="group"
+						colors={colors.seq5}
+						yFormatTick={d=>'$'+d/1000 + 'k'}
+						line={true} area={false} areaOpacity={0.3}
+						title="Cost for owning your own car vs carshare after 10 years"
+						footer="estimates from 2023 average prices, assuming 5000 miles/year of travel"
+						legend={true}
+						{animation} labels={['a','b','c']}
+						hover={true} select={false}
+						bind:selected={selected_chart}
+						snapTicks={false}
+						margin="100px">
+						<!-- <div slot="options" class="controls small">
+							$ <label class="switch"> <input type="checkbox" bind:checked={linechart.line}/> <span class="slider round"></span> </label> CO2
+						</div> -->
+					</LineChart>
+				</div>
 			</div>
 		</figure>
 	</div>
@@ -347,76 +429,140 @@
 		<section data-id="chart01">
 			<div class="col-medium">
 				<p>
-					This chart shows the <strong>area in square kilometres</strong> of each local authority district in the UK. Each circle represents one district. The scale is logarithmic.
+					This chart shows the <strong>expected cost</strong> of our carshare program compared to owning your own car and the leading carshare competitor Zipcar.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart02">
 			<div class="col-medium">
 				<p>
-					The radius of each circle shows the <strong>total population</strong> of the district.
+					As you can see, owning your own car adds up to a cost of nearly $70k after 10 years.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart03">
 			<div class="col-medium">
 				<p>
-					The vertical axis shows the <strong>density</strong> of the district in people per hectare.
-				</p>
-			</div>
-		</section>
-		<section data-id="chart04">
-			<div class="col-medium">
-				<p>
-					The colour of each circle shows the <strong>part of the country</strong> that the district is within.
+					Meanwhile, our offering at Down The Block carshare is substantially cheaper.
 				</p>
 			</div>
 		</section>
 		<section data-id="chart05">
 			<div class="col-medium">
-				<h3>Select a district</h3>
-				<p>Use the selection box below or click on the chart to select a district. The chart will also highlight the other districts in the same part of the country.</p>
-				{#if geojson}
+				<h3>Choose your mileage</h3>
+				<p>Use the selection box below to select your average mileage and see how your costs will compare.</p>
 					<p>
 						<!-- svelte-ignore a11y-no-onchange -->
-						<select bind:value={selected}>
-							<option value={null}>Select one</option>
-							{#each geojson.features as place}
-								<option value={place.properties.AREACD}>
-									{place.properties.AREANM}
+						<select bind:value={mileage_selected}>
+							{#each mileage_choices as m}
+								<option value={m.ind}>
+									{m.val}
 								</option>
 							{/each}
 						</select>
 					</p>
-				{/if}
 			</div>
 		</section>
 	</div>
 </Scroller>
 
+<Divider/>
+
+<Section>
+	<h2 id="start">Why Carshare? Build a Better City</h2>
+	<blockquote class="text-indent">
+		"I believe Madison is ready to accelerate climate action for the benefit of our community and our world."&mdash;Mayor Satya Rhodes-Conway
+	</blockquote>
+</Section>
+
+<Scroller {threshold} bind:id={id['image']}>
+	<div slot="background">
+		<div class="col-full height-full">
+			<img alt="images of Madison's new plans for Law Park and Monona Terrace." src={image_image} style="width:100%;max-height:100vh;transition: all .3s ease-in-out;"/>
+		</div>
+	</div>
+
+	<div slot="foreground">
+		<section data-id="image01">
+			<div class="col-medium">
+				<p>
+					Madison has set ambitious goals for increasing our sustainability and our resilience for a future of climate change.
+				</p>
+			</div>
+		</section>
+		<section data-id="image02">
+			<div class="col-medium">
+				<p>
+					As part of that future we are dedicated to revamping our city's infrastructure. But we can't do that without significant change to our assumptions about what it means to live here.
+				</p>
+			</div>
+		</section>
+	</div>
+</Scroller>
+
+<Divider/>
+
+<Section>
+	<h2 id="start">Why Carshare? Protect the Environment</h2>
+	<blockquote class="text-indent">
+		"Car sharers emit between <strong>8%</strong> and <strong>13%</strong> less CO2 per person, per year. About half of this reduction can be
+		ascribed to less car use; the other half to the lower degree of car ownership."&mdash;Nijlin et al. 2015
+	</blockquote>
+	<!-- <BarChart
+			  data={eco_data}
+				xKey="value" yKey="mode"
+				title="Greenhouse gas emissions effects from switching to carshare"
+				footer="Source: ."
+				{animation}>
+			</BarChart> -->
+</Section>
+
+<Divider/>
+
+
+<Section>
+	
+	<h2>Madison is Ready!</h2>
+	<p>
+		We recently surveyed our Madison neighbors and found that they are ready to take action and change the way we are dependent on cars to get around.
+	</p>
+	<figure>
+		<div class="col-wide">
+				<div class="chart" style='margin-left:50px;overflow:scroll'>
+					<WordCloud bind:words={words} width=500 height=250 maxFontSize=13 padding=1/>
+				</div>
+		</div>
+	</figure>
+	<p>
+		We are offering all the convenience of a car, with none of the cost, maintenance, parking or guilt.
+	</p>
+	
+</Section>
+
+
+
 <Divider />
 
 
 <Section>
-	<h2>Our Vision</h2>
+	<h2>Getting around with Down the Block</h2>
 	<p>
-		What does this look like in our city.
+		We plan to roll out our offering to a selection of targeted neighborhoods throughout the city.
 	</p>
 </Section>
+<Divider />
 
-{#if geojson && data.district.indicators}
 <Scroller {threshold} bind:id={id['map']}>
 	<div slot="background">
 		<figure>
 			<div class="col-full height-full">  
-				<!-- location={{bounds: [[-89.75, 42.95],[-89, 43.2 ]]} -->
-				<Map id="map1" style={mapstyle} bind:map interactive={false} zoom={13} center={[-89.45, 43.1]}>
+				<Map id="map1" style={mapstyle} bind:map interactive={false}  location={{bounds: mapbounds.uk}}>
 					<MapSource
 					  id="lad"
 					  type="geojson"
 					  data={geojson}
 					  promoteId="geoid"
-					  maxzoom={13}>
+					  maxzoom={17}>
 					  <MapLayer
 					  	id="lad-fill"
 						idKey="geoid"
@@ -445,20 +591,19 @@
 		<section data-id="map01">
 			<div class="col-medium">
 				<p>
-					This map shows <strong>population density</strong> by district. Districts are coloured from <Em color={colors.seq[0]}>least dense</Em> to <Em color={colors.seq[4]}>most dense</Em>. You can hover to see the district name and density.
+					This map shows the neighborhoods we want to rollout in, compared to the limited availability of Zipcar.
 				</p>
 			</div>
 		</section>
 		<section data-id="map02">
 			<div class="col-medium">
 				<p>
-					The map now shows <strong>median age</strong>, from <Em color={colors.seq[0]}>youngest</Em> to <Em color={colors.seq[4]}>oldest</Em>.
+					We're looking to 
 				</p>
 			</div>
 		</section>
-		<section data-id="map03">
+		<!-- <section data-id="map03">
 			<div class="col-medium">
-				<!-- This gets the data object for the district with the oldest median age -->
 				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
 				<p>
 					The map is now zoomed on <Em color={district.age_med_color}>{district.name}</Em>, the district with the oldest median age, {district.age_med} years.
@@ -470,9 +615,7 @@
 			<div class="col-medium">
 				<h3>Select a district</h3>
 				<p>Use the selection box below or click on the map to select and zoom to a district.</p>
-				{#if geojson}
 					<p>
-						<!-- svelte-ignore a11y-no-onchange -->
 						<select bind:value={selected} on:change={() => fitById(selected)}>
 							<option value={null}>Select one</option>
 							{#each geojson.features as place}
@@ -482,20 +625,22 @@
 							{/each}
 						</select>
 					</p>
-				{/if}
 			</div>
-		</section>
+		</section> -->
 	</div>
 </Scroller>
-{/if}
 
 
 <Divider />
 
 <Section>
-	<h2>The nitty gritty details</h2>
+	<h2 id="signup">Help us</h2>
 	<p>
-		Here we include lots of details about how insurance and pricing work, how and where we are rolling this out in Tenney Lapham in 2024, and why you should get in touch.
+		We're working to make this future a possibility today!  You can help by taking a <a href="https://forms.gle/p8iJkaLSgSe5JEmA7">brief survey</a> to inform our site location plans, or you can sign up to our mailing list to receive updates when we roll out.
+	</p>
+
+	<p>
+		If you are interested in joining our steering committee, you can email us at <a href="mailto:madison.carshare@gmail.com">madison.carshare@gmail.com</a>.
 	</p>
 </Section>
 
@@ -514,7 +659,7 @@
 	}
 	.chart {
 		margin-top: 45px;
-		width: calc(100% - 5px);
+		width: calc(90% - 5px);
 	}
 	.chart-full {
 		margin: 0 20px;
@@ -537,5 +682,67 @@
 		justify-content: center;
 		text-align: center;
 		color: #aaa;
+	}
+
+	.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+	}
+
+	/* Hide default HTML checkbox */
+	.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	}
+
+	/* The slider */
+	.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+	}
+
+	.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+	}
+
+	input:checked + .slider {
+	background-color: #2196F3;
+	}
+
+	input:focus + .slider {
+	box-shadow: 0 0 1px #2196F3;
+	}
+
+	input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+	}
+
+	/* Rounded sliders */
+	.slider.round {
+	border-radius: 34px;
+	}
+
+	.slider.round:before {
+	border-radius: 50%;
 	}
 </style>

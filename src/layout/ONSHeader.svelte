@@ -9,16 +9,10 @@
 
 <nav style="border-bottom-color: {themes[theme]['muted']}; {filled ? 'background-color: ' +  themes[theme]['background'] + ';' : ''}">
   <div class="col-wide middle" class:center>
-		<a href="/" style="text-decoration:none;">
-			<!-- <picture>
-				{#if theme == 'dark'}
-				<img src="./img/ons-logo-neg-en.svg" alt="Office for National Statistics">
-				{:else if filled == true}
-				<img src="./img/ons-logo-pos-en.svg" alt="Office for National Statistics">
-				{:else}
-				<img src="./img/ons-logo-black-en.svg" alt="Office for National Statistics">
-				{/if}
-			</picture> -->
+		<a href="/" style="text-decoration:none;color:black;">
+			<picture>
+				<img src="./img/logo.jpg" alt="" style="height:40px;width:40px">
+			</picture>
 			Down The Block Carshare
 		</a>
   </div>
