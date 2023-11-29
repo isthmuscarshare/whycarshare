@@ -142,6 +142,7 @@
 	let explore = false; // Allows chart/map interactivity to be toggled on/off
 
 	let image_image = "./img/utopia2.jpg"
+	let image_opacity = 1
 
 	let words = words1
 
@@ -201,50 +202,27 @@
 		},
 		chart: {
 			chart01: () => {
-				xKey = "area";
-				yKey = null;
-				zKey = null;
-				rKey = null;
-				explore = false;
 				selected_chart = null;
 			},
 			chart02: () => {
-				xKey = "area";
-				yKey = null;
-				zKey = null;
-				rKey = "pop";
 				selected_chart="New Car";
 			},
 			chart03: () => {
-				xKey = "area";
-				yKey = "density";
-				zKey = null;
-				rKey = "pop";
-				explore = false;
 				selected_chart="Down The Block";
 			},
 			chart04: () => {
-				xKey = "area";
-				yKey = "density";
-				zKey = "parent_name";
-				rKey = "pop";
-				explore = false;
 				selected_chart = null;
 			},
 			chart05: () => {
-				xKey = "area";
-				yKey = "density";
-				zKey = null;
-				rKey = "pop";
-				explore = true;
+				selected_chart = null;
 			}
 		},
 		image: { // Actions for <Scroller/> with id="map"
 			image01: () => {
-				image_image = "./img/utopia2.jpg"
+				image_opacity = 1
 			},
 			image02: () => {
-				image_image = "./img/utopia1.jpg"
+				image_opacity = 0
 			}
 		},
 		words: { // Actions for <Scroller/> with id="map"
@@ -387,7 +365,7 @@ import WordCloud from "svelte-d3-cloud";
 <Section>
 	<h2 id="start">Why Carshare? Save Money</h2>
 	<p>
-		The average car owner spends <a href="https://www.moneygeek.com/insurance/auto/analysis/costs-of-car-ownership/">$10,000</a> per year on their car.  And the typical car is sitting parked <a href="https://usa.streetsblog.org/2016/03/10/its-true-the-typical-car-is-parked-95-percent-of-the-time">95%</a> of the time.
+		The average car owner spends $10,000 per year on their car<a href="https://www.moneygeek.com/insurance/auto/analysis/costs-of-car-ownership/"><sup>[1]</sup></a>.  And the typical car is sitting parked 95% of the time<a href="https://usa.streetsblog.org/2016/03/10/its-true-the-typical-car-is-parked-95-percent-of-the-time"><sup>[2]</sup></a>.
 	</p>
 	<p>
 		We want to bring all the convenience of owning a car, with less hassle, cost, and environmental impact.  That's why we're building our carshare solution. Read on to learn more.
@@ -409,13 +387,12 @@ import WordCloud from "svelte-d3-cloud";
 						yFormatTick={d=>'$'+d/1000 + 'k'}
 						line={true} area={false} areaOpacity={0.3}
 						title="Cost for owning your own car vs carshare after 10 years"
-						footer="estimates from 2023 average prices, assuming 5000 miles/year of travel"
+						footer={"estimates from 2023 average prices, assuming "+mileage_choices[mileage_selected].val+" miles/year of travel"}
 						legend={true}
-						{animation} labels={['a','b','c']}
+						{animation} labels
 						hover={true} select={false}
 						bind:selected={selected_chart}
-						snapTicks={false}
-						margin="100px">
+						snapTicks={false}>
 						<!-- <div slot="options" class="controls small">
 							$ <label class="switch"> <input type="checkbox" bind:checked={linechart.line}/> <span class="slider round"></span> </label> CO2
 						</div> -->
@@ -477,8 +454,8 @@ import WordCloud from "svelte-d3-cloud";
 
 <Scroller {threshold} bind:id={id['image']}>
 	<div slot="background">
-		<div class="col-full height-full">
-			<img alt="images of Madison's new plans for Law Park and Monona Terrace." src={image_image} style="width:100%;max-height:100vh;transition: all .3s ease-in-out;"/>
+		<div class="col-full height-full image-container">
+			<img alt="images of Madison's new plans for Law Park and Monona Terrace." src={image_image} style="width:100%; height:100vh; transition: all .3s ease-in-out; opacity:{image_opacity};"/>
 		</div>
 	</div>
 
@@ -486,14 +463,14 @@ import WordCloud from "svelte-d3-cloud";
 		<section data-id="image01">
 			<div class="col-medium">
 				<p>
-					Madison has set ambitious goals for increasing our sustainability and our resilience for a future of climate change.
+					Madison has set ambitious goals for increasing our sustainability and our resilience for a future of climate change.  We've chosen bold ideas like these from <a href="https://fox47.com/news/local/results-of-lake-monona-waterfront-survey-shows-slight-preference-for-bold-redesign">Lake Monona's Waterfront Redesign Survey</a>.
 				</p>
 			</div>
 		</section>
 		<section data-id="image02">
 			<div class="col-medium">
 				<p>
-					As part of that future we are dedicated to revamping our city's infrastructure. But we can't do that without significant change to our assumptions about what it means to live here.
+					As part of that future we are dedicated to revamping our city's infrastructure. But we can't do that without significant change to our assumptions about what it means to travel here.
 				</p>
 			</div>
 		</section>
@@ -526,18 +503,20 @@ import WordCloud from "svelte-d3-cloud";
 	<p>
 		We recently surveyed our Madison neighbors and found that they are ready to take action and change the way we are dependent on cars to get around.
 	</p>
-	<figure>
-		<div class="col-wide">
-				<div class="chart" style='margin-left:50px;overflow:scroll'>
-					<WordCloud bind:words={words} width=500 height=250 maxFontSize=13 padding=1/>
-				</div>
+	<figure class="myfigure">
+		<div class="col-wide" style="width:98%;">
+			<div class="chart" style='margin-left:50px;overflow:scroll'>
+				<WordCloud bind:words={words} width=500 height=250 maxFontSize=13 padding=1/>
+			</div>
 		</div>
+		<figcaption>Responses for what neighbors liked least about owning their cars.</figcaption>
 	</figure>
 	<p>
 		We are offering all the convenience of a car, with none of the cost, maintenance, parking or guilt.
 	</p>
 	
 </Section>
+
 
 
 
@@ -568,13 +547,13 @@ import WordCloud from "svelte-d3-cloud";
 						idKey="geoid"
 						colorKey="color"
 					  	data={subdata}
-					  	type="fill"
+					  	type="line"
 						select {selected} on:select={doSelect} clickIgnore={!explore}
 						hover {hovered} on:hover={doHover}
 						highlight highlighted={mapHighlighted}
 						paint={{
-							'fill-color':  ['feature-state', 'color'],
-							'fill-opacity': 0.7
+							'line-color':  ['feature-state', 'color'],
+							'line-width': 10
 						}}
 					  	>
 								<!-- <MapTooltip content={
@@ -659,7 +638,7 @@ import WordCloud from "svelte-d3-cloud";
 	}
 	.chart {
 		margin-top: 45px;
-		width: calc(90% - 5px);
+		width: calc(80%);
 	}
 	.chart-full {
 		margin: 0 20px;
@@ -744,5 +723,30 @@ import WordCloud from "svelte-d3-cloud";
 
 	.slider.round:before {
 	border-radius: 50%;
+	}
+
+	.image-container {
+	background: url(https://stedn.github.io/down-the-block/public/img/utopia1.jpg) center center no-repeat;
+	background-size: 100% 100vh;
+	
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+	}
+
+	.myfigure {
+	border: thin #c0c0c0 solid;
+	display: flex;
+	flex-flow: column;
+	padding: 5px;
+	margin: auto;
+	}
+
+	.myfigure figcaption {
+	background-color: #222;
+	color: #fff;
+	font: italic smaller sans-serif;
+	padding: 3px;
+	text-align: center;
 	}
 </style>

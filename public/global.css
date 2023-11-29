@@ -244,6 +244,10 @@ svelte-scroller-background-container {
 	padding: 100vh 0 100vh 0;
 }
 
+[slot="foreground"] section:first-of-type {
+	padding-top: 400px;
+}
+
 [slot="foreground"] section + section {
 	padding: 0 0 100vh 0;
 }
@@ -293,6 +297,10 @@ svelte-scroller-background-container {
 		margin: 0 auto 0 0;
 		background-color: #fff;
 	}
+	.splitscreen [slot="foreground"] section:first-of-type {
+		padding-top: 200px;
+	  }
+	  
 	.splitscreen [slot="foreground"] .col-medium {
 		width: 100%;
 		margin: 0;	
