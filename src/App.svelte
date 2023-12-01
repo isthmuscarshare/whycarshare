@@ -337,7 +337,7 @@ import WordCloud from "svelte-d3-cloud";
 <Header bgimage="./img/bg-image4.jpg" bgfixed={true} theme="light" center={false} short={true}>
 	<h1>Bringing Better Carshare to Madison	</h1>
 	<p class="text-big" style="margin-top: 25px; background-color:rgba(204, 204, 204, 0.9);padding:1%;" >
-		We're building a new carshare solution, so you can get where you're going, save money, and help make our city a more walkable, human-friendly place to live.
+		We're building a new carshare solution so you can <a href="">save money</a>, help <a href="">build a better city</a>, and <a href="">protect the environment</a>, while getting where you need to go each day.
 	</p>
 	<!-- <p style="margin-top: 20px">
 		DD MMM YYYY
@@ -368,7 +368,7 @@ import WordCloud from "svelte-d3-cloud";
 		The average car owner spends $10,000 per year on their car<a href="https://www.moneygeek.com/insurance/auto/analysis/costs-of-car-ownership/"><sup>[1]</sup></a>.  And the typical car is sitting parked 95% of the time<a href="https://usa.streetsblog.org/2016/03/10/its-true-the-typical-car-is-parked-95-percent-of-the-time"><sup>[2]</sup></a>.
 	</p>
 	<p>
-		We want to bring all the convenience of owning a car, with less hassle, cost, and environmental impact.  That's why we're building our carshare solution. Read on to learn more.
+		We're building a local-focused carshare program that will lower the cost of transportation for our members.
 	</p>
 </Section>
 
@@ -474,6 +474,13 @@ import WordCloud from "svelte-d3-cloud";
 				</p>
 			</div>
 		</section>
+		<section data-id="image03">
+			<div class="col-medium">
+				<p>
+					Switching to carshare helps makes alternatives like transit and cycling more appealing and frees up parking space in our city for gardens, housing, and countless amenities.
+				</p>
+			</div>
+		</section>
 	</div>
 </Scroller>
 
@@ -512,7 +519,7 @@ import WordCloud from "svelte-d3-cloud";
 		<figcaption>Responses for what neighbors liked least about owning their cars.</figcaption>
 	</figure>
 	<p>
-		We are offering all the convenience of a car, with none of the cost, maintenance, parking or guilt.
+		Our service offers all the convenience of a car, with none of the cost, maintenance, parking or environmental guilt.
 	</p>
 	
 </Section>
@@ -562,6 +569,7 @@ import WordCloud from "svelte-d3-cloud";
 							</MapLayer>
 				  </MapSource>
 				</Map>
+				<iframe src="chads_stuff.html" />
 			</div>
 		</figure>
 	</div>
@@ -617,7 +625,7 @@ import WordCloud from "svelte-d3-cloud";
 	<p>
 		We're working to make this future a possibility today!  You can help by taking a <a href="https://forms.gle/p8iJkaLSgSe5JEmA7">brief survey</a> to inform our site location plans, or you can sign up to our mailing list to receive updates when we roll out.
 	</p>
-
+	insert email signup form
 	<p>
 		If you are interested in joining our steering committee, you can email us at <a href="mailto:madison.carshare@gmail.com">madison.carshare@gmail.com</a>.
 	</p>
