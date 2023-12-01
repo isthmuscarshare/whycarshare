@@ -26688,12 +26688,12 @@ uniform `+P+" "+z+" u_"+k+`;
 
     function get_each_context$9(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[55] = list[i];
+    	child_ctx[53] = list[i];
     	return child_ctx;
     }
 
     // (350:3) <Arrow color="white" {animation}>
-    function create_default_slot_11(ctx) {
+    function create_default_slot_7(ctx) {
     	let a0;
     	let span0;
     	let t1;
@@ -26736,7 +26736,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_11.name,
+    		id: create_default_slot_7.name,
     		type: "slot",
     		source: "(350:3) <Arrow color=\\\"white\\\" {animation}>",
     		ctx
@@ -26746,7 +26746,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (337:0) <Header bgimage="./img/bg-image4.jpg" bgfixed={true} theme="light" center={false} short={true}>
-    function create_default_slot_10(ctx) {
+    function create_default_slot_6(ctx) {
     	let h1;
     	let t1;
     	let p;
@@ -26765,8 +26765,8 @@ uniform `+P+" "+z+" u_"+k+`;
     	arrow = new Arrow({
     			props: {
     				color: "white",
-    				animation: /*animation*/ ctx[12],
-    				$$slots: { default: [create_default_slot_11] },
+    				animation: /*animation*/ ctx[6],
+    				$$slots: { default: [create_default_slot_7] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -26826,7 +26826,7 @@ uniform `+P+" "+z+" u_"+k+`;
     		p: function update(ctx, dirty) {
     			const arrow_changes = {};
 
-    			if (dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[1] & /*$$scope*/ 33554432) {
     				arrow_changes.$$scope = { dirty, ctx };
     			}
 
@@ -26853,7 +26853,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_10.name,
+    		id: create_default_slot_6.name,
     		type: "slot",
     		source: "(337:0) <Header bgimage=\\\"./img/bg-image4.jpg\\\" bgfixed={true} theme=\\\"light\\\" center={false} short={true}>",
     		ctx
@@ -26863,7 +26863,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (365:0) <Section>
-    function create_default_slot_9(ctx) {
+    function create_default_slot_5(ctx) {
     	let h2;
     	let t1;
     	let p0;
@@ -26931,7 +26931,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_9.name,
+    		id: create_default_slot_5.name,
     		type: "slot",
     		source: "(365:0) <Section>",
     		ctx
@@ -26941,7 +26941,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (378:1) 
-    function create_background_slot_2(ctx) {
+    function create_background_slot_1(ctx) {
     	let div2;
     	let figure;
     	let div1;
@@ -26952,11 +26952,11 @@ uniform `+P+" "+z+" u_"+k+`;
     	let current;
 
     	function linechart_1_data_binding(value) {
-    		/*linechart_1_data_binding*/ ctx[22](value);
+    		/*linechart_1_data_binding*/ ctx[13](value);
     	}
 
     	function linechart_1_selected_binding(value) {
-    		/*linechart_1_selected_binding*/ ctx[23](value);
+    		/*linechart_1_selected_binding*/ ctx[14](value);
     	}
 
     	let linechart_1_props = {
@@ -26970,21 +26970,21 @@ uniform `+P+" "+z+" u_"+k+`;
     		area: false,
     		areaOpacity: 0.3,
     		title: "Cost for owning your own car vs carshare after 10 years",
-    		footer: "estimates from 2023 average prices, assuming " + /*mileage_choices*/ ctx[15][/*mileage_selected*/ ctx[5]].val + " miles/year of travel",
+    		footer: "estimates from 2023 average prices, assuming " + /*mileage_choices*/ ctx[7][/*mileage_selected*/ ctx[3]].val + " miles/year of travel",
     		legend: true,
-    		animation: /*animation*/ ctx[12],
+    		animation: /*animation*/ ctx[6],
     		labels: true,
     		hover: true,
     		select: false,
     		snapTicks: false
     	};
 
-    	if (/*mydata*/ ctx[4][/*mileage_selected*/ ctx[5]] !== void 0) {
-    		linechart_1_props.data = /*mydata*/ ctx[4][/*mileage_selected*/ ctx[5]];
+    	if (/*mydata*/ ctx[2][/*mileage_selected*/ ctx[3]] !== void 0) {
+    		linechart_1_props.data = /*mydata*/ ctx[2][/*mileage_selected*/ ctx[3]];
     	}
 
-    	if (/*selected_chart*/ ctx[3] !== void 0) {
-    		linechart_1_props.selected = /*selected_chart*/ ctx[3];
+    	if (/*selected_chart*/ ctx[1] !== void 0) {
+    		linechart_1_props.selected = /*selected_chart*/ ctx[1];
     	}
 
     	linechart_1 = new LineChart({ props: linechart_1_props, $$inline: true });
@@ -27016,17 +27016,17 @@ uniform `+P+" "+z+" u_"+k+`;
     		},
     		p: function update(ctx, dirty) {
     			const linechart_1_changes = {};
-    			if (dirty[0] & /*mileage_selected*/ 32) linechart_1_changes.footer = "estimates from 2023 average prices, assuming " + /*mileage_choices*/ ctx[15][/*mileage_selected*/ ctx[5]].val + " miles/year of travel";
+    			if (dirty[0] & /*mileage_selected*/ 8) linechart_1_changes.footer = "estimates from 2023 average prices, assuming " + /*mileage_choices*/ ctx[7][/*mileage_selected*/ ctx[3]].val + " miles/year of travel";
 
-    			if (!updating_data && dirty[0] & /*mydata, mileage_selected*/ 48) {
+    			if (!updating_data && dirty[0] & /*mydata, mileage_selected*/ 12) {
     				updating_data = true;
-    				linechart_1_changes.data = /*mydata*/ ctx[4][/*mileage_selected*/ ctx[5]];
+    				linechart_1_changes.data = /*mydata*/ ctx[2][/*mileage_selected*/ ctx[3]];
     				add_flush_callback(() => updating_data = false);
     			}
 
-    			if (!updating_selected && dirty[0] & /*selected_chart*/ 8) {
+    			if (!updating_selected && dirty[0] & /*selected_chart*/ 2) {
     				updating_selected = true;
-    				linechart_1_changes.selected = /*selected_chart*/ ctx[3];
+    				linechart_1_changes.selected = /*selected_chart*/ ctx[1];
     				add_flush_callback(() => updating_selected = false);
     			}
 
@@ -27049,7 +27049,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_background_slot_2.name,
+    		id: create_background_slot_1.name,
     		type: "slot",
     		source: "(378:1) ",
     		ctx
@@ -27061,7 +27061,7 @@ uniform `+P+" "+z+" u_"+k+`;
     // (434:7) {#each mileage_choices as m}
     function create_each_block$9(ctx) {
     	let option;
-    	let t0_value = /*m*/ ctx[55].val + "";
+    	let t0_value = /*m*/ ctx[53].val + "";
     	let t0;
     	let t1;
     	let option_value_value;
@@ -27071,7 +27071,7 @@ uniform `+P+" "+z+" u_"+k+`;
     			option = element("option");
     			t0 = text(t0_value);
     			t1 = space();
-    			option.__value = option_value_value = /*m*/ ctx[55].ind;
+    			option.__value = option_value_value = /*m*/ ctx[53].ind;
     			option.value = option.__value;
     			add_location(option, file$t, 434, 8, 13230);
     		},
@@ -27098,7 +27098,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (405:1) 
-    function create_foreground_slot_2(ctx) {
+    function create_foreground_slot_1(ctx) {
     	let div4;
     	let section0;
     	let div0;
@@ -27125,7 +27125,7 @@ uniform `+P+" "+z+" u_"+k+`;
     	let select;
     	let mounted;
     	let dispose;
-    	let each_value = /*mileage_choices*/ ctx[15];
+    	let each_value = /*mileage_choices*/ ctx[7];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -27188,7 +27188,7 @@ uniform `+P+" "+z+" u_"+k+`;
     			add_location(h3, file$t, 428, 4, 12950);
     			add_location(p3, file$t, 429, 4, 12983);
     			attr_dev(select, "class", "svelte-1l6r92a");
-    			if (/*mileage_selected*/ ctx[5] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[21].call(select));
+    			if (/*mileage_selected*/ ctx[3] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[12].call(select));
     			add_location(select, file$t, 432, 6, 13147);
     			add_location(p4, file$t, 430, 5, 13091);
     			attr_dev(div3, "class", "col-medium");
@@ -27228,16 +27228,16 @@ uniform `+P+" "+z+" u_"+k+`;
     				each_blocks[i].m(select, null);
     			}
 
-    			select_option(select, /*mileage_selected*/ ctx[5]);
+    			select_option(select, /*mileage_selected*/ ctx[3]);
 
     			if (!mounted) {
-    				dispose = listen_dev(select, "change", /*select_change_handler*/ ctx[21]);
+    				dispose = listen_dev(select, "change", /*select_change_handler*/ ctx[12]);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*mileage_choices*/ 32768) {
-    				each_value = /*mileage_choices*/ ctx[15];
+    			if (dirty[0] & /*mileage_choices*/ 128) {
+    				each_value = /*mileage_choices*/ ctx[7];
     				validate_each_argument(each_value);
     				let i;
 
@@ -27260,8 +27260,8 @@ uniform `+P+" "+z+" u_"+k+`;
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty[0] & /*mileage_selected, mileage_choices*/ 32800) {
-    				select_option(select, /*mileage_selected*/ ctx[5]);
+    			if (dirty[0] & /*mileage_selected, mileage_choices*/ 136) {
+    				select_option(select, /*mileage_selected*/ ctx[3]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -27274,7 +27274,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_foreground_slot_2.name,
+    		id: create_foreground_slot_1.name,
     		type: "slot",
     		source: "(405:1) ",
     		ctx
@@ -27284,7 +27284,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (448:0) <Section>
-    function create_default_slot_7(ctx) {
+    function create_default_slot_3$3(ctx) {
     	let h2;
     	let t1;
     	let blockquote;
@@ -27315,7 +27315,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_7.name,
+    		id: create_default_slot_3$3.name,
     		type: "slot",
     		source: "(448:0) <Section>",
     		ctx
@@ -27325,7 +27325,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (456:1) 
-    function create_background_slot_1(ctx) {
+    function create_background_slot(ctx) {
     	let div1;
     	let div0;
     	let img;
@@ -27337,11 +27337,11 @@ uniform `+P+" "+z+" u_"+k+`;
     			div0 = element("div");
     			img = element("img");
     			attr_dev(img, "alt", "images of Madison's new plans for Law Park and Monona Terrace.");
-    			if (!src_url_equal(img.src, img_src_value = /*image_image*/ ctx[16])) attr_dev(img, "src", img_src_value);
+    			if (!src_url_equal(img.src, img_src_value = /*image_image*/ ctx[8])) attr_dev(img, "src", img_src_value);
     			set_style(img, "width", "100%");
     			set_style(img, "height", "100vh");
     			set_style(img, "transition", "all .3s ease-in-out");
-    			set_style(img, "opacity", /*image_opacity*/ ctx[10]);
+    			set_style(img, "opacity", /*image_opacity*/ ctx[4]);
     			add_location(img, file$t, 457, 3, 13777);
     			attr_dev(div0, "class", "col-full height-full image-container svelte-1l6r92a");
     			add_location(div0, file$t, 456, 2, 13723);
@@ -27354,8 +27354,8 @@ uniform `+P+" "+z+" u_"+k+`;
     			append_dev(div0, img);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*image_opacity*/ 1024) {
-    				set_style(img, "opacity", /*image_opacity*/ ctx[10]);
+    			if (dirty[0] & /*image_opacity*/ 16) {
+    				set_style(img, "opacity", /*image_opacity*/ ctx[4]);
     			}
     		},
     		d: function destroy(detaching) {
@@ -27365,7 +27365,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_background_slot_1.name,
+    		id: create_background_slot.name,
     		type: "slot",
     		source: "(456:1) ",
     		ctx
@@ -27375,7 +27375,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (462:1) 
-    function create_foreground_slot_1(ctx) {
+    function create_foreground_slot(ctx) {
     	let div3;
     	let section0;
     	let div0;
@@ -27456,7 +27456,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_foreground_slot_1.name,
+    		id: create_foreground_slot.name,
     		type: "slot",
     		source: "(462:1) ",
     		ctx
@@ -27466,7 +27466,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (489:0) <Section>
-    function create_default_slot_6(ctx) {
+    function create_default_slot_2$3(ctx) {
     	let h2;
     	let t1;
     	let blockquote;
@@ -27515,7 +27515,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_6.name,
+    		id: create_default_slot_2$3.name,
     		type: "slot",
     		source: "(489:0) <Section>",
     		ctx
@@ -27525,7 +27525,7 @@ uniform `+P+" "+z+" u_"+k+`;
     }
 
     // (507:0) <Section>
-    function create_default_slot_5(ctx) {
+    function create_default_slot_1$3(ctx) {
     	let h2;
     	let t1;
     	let p0;
@@ -27542,7 +27542,7 @@ uniform `+P+" "+z+" u_"+k+`;
     	let current;
 
     	function wordcloud_words_binding(value) {
-    		/*wordcloud_words_binding*/ ctx[26](value);
+    		/*wordcloud_words_binding*/ ctx[17](value);
     	}
 
     	let wordcloud_props = {
@@ -27552,8 +27552,8 @@ uniform `+P+" "+z+" u_"+k+`;
     		padding: "1"
     	};
 
-    	if (/*words*/ ctx[11] !== void 0) {
-    		wordcloud_props.words = /*words*/ ctx[11];
+    	if (/*words*/ ctx[5] !== void 0) {
+    		wordcloud_props.words = /*words*/ ctx[5];
     	}
 
     	wordcloud = new WordCloud({ props: wordcloud_props, $$inline: true });
@@ -27610,9 +27610,9 @@ uniform `+P+" "+z+" u_"+k+`;
     		p: function update(ctx, dirty) {
     			const wordcloud_changes = {};
 
-    			if (!updating_words && dirty[0] & /*words*/ 2048) {
+    			if (!updating_words && dirty[0] & /*words*/ 32) {
     				updating_words = true;
-    				wordcloud_changes.words = /*words*/ ctx[11];
+    				wordcloud_changes.words = /*words*/ ctx[5];
     				add_flush_callback(() => updating_words = false);
     			}
 
@@ -27641,7 +27641,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_default_slot_5.name,
+    		id: create_default_slot_1$3.name,
     		type: "slot",
     		source: "(507:0) <Section>",
     		ctx
@@ -27650,338 +27650,7 @@ uniform `+P+" "+z+" u_"+k+`;
     	return block;
     }
 
-    // (533:0) <Section>
-    function create_default_slot_4(ctx) {
-    	let h2;
-    	let t1;
-    	let p;
-
-    	const block = {
-    		c: function create() {
-    			h2 = element("h2");
-    			h2.textContent = "Getting around with Down the Block";
-    			t1 = space();
-    			p = element("p");
-    			p.textContent = "We plan to roll out our offering to a selection of targeted neighborhoods throughout the city.";
-    			add_location(h2, file$t, 533, 1, 16329);
-    			add_location(p, file$t, 534, 1, 16374);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, h2, anchor);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, p, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h2);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(p);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_4.name,
-    		type: "slot",
-    		source: "(533:0) <Section>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (546:5) <MapSource        id="lad"        type="geojson"        data={geojson}        promoteId="geoid"        maxzoom={17}>
-    function create_default_slot_2$3(ctx) {
-    	let maplayer;
-    	let current;
-
-    	maplayer = new MapLayer({
-    			props: {
-    				id: "lad-fill",
-    				idKey: "geoid",
-    				colorKey: "color",
-    				data: /*subdata*/ ctx[14],
-    				type: "line",
-    				select: true,
-    				selected: /*selected*/ ctx[1],
-    				clickIgnore: !/*explore*/ ctx[9],
-    				hover: true,
-    				hovered: /*hovered*/ ctx[7],
-    				highlight: true,
-    				highlighted: /*mapHighlighted*/ ctx[8],
-    				paint: {
-    					'line-color': ['feature-state', 'color'],
-    					'line-width': 10
-    				}
-    			},
-    			$$inline: true
-    		});
-
-    	maplayer.$on("select", /*doSelect*/ ctx[17]);
-    	maplayer.$on("hover", /*doHover*/ ctx[18]);
-
-    	const block = {
-    		c: function create() {
-    			create_component(maplayer.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(maplayer, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const maplayer_changes = {};
-    			if (dirty[0] & /*selected*/ 2) maplayer_changes.selected = /*selected*/ ctx[1];
-    			if (dirty[0] & /*explore*/ 512) maplayer_changes.clickIgnore = !/*explore*/ ctx[9];
-    			if (dirty[0] & /*hovered*/ 128) maplayer_changes.hovered = /*hovered*/ ctx[7];
-    			if (dirty[0] & /*mapHighlighted*/ 256) maplayer_changes.highlighted = /*mapHighlighted*/ ctx[8];
-    			maplayer.$set(maplayer_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(maplayer.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(maplayer.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(maplayer, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_2$3.name,
-    		type: "slot",
-    		source: "(546:5) <MapSource        id=\\\"lad\\\"        type=\\\"geojson\\\"        data={geojson}        promoteId=\\\"geoid\\\"        maxzoom={17}>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (545:4) <Map id="map1" style={mapstyle} bind:map interactive={false}  location={{bounds: mapbounds.uk}}>
-    function create_default_slot_1$3(ctx) {
-    	let mapsource;
-    	let current;
-
-    	mapsource = new MapSource({
-    			props: {
-    				id: "lad",
-    				type: "geojson",
-    				data: /*geojson*/ ctx[2],
-    				promoteId: "geoid",
-    				maxzoom: 17,
-    				$$slots: { default: [create_default_slot_2$3] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			create_component(mapsource.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(mapsource, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const mapsource_changes = {};
-    			if (dirty[0] & /*geojson*/ 4) mapsource_changes.data = /*geojson*/ ctx[2];
-
-    			if (dirty[0] & /*selected, explore, hovered, mapHighlighted*/ 898 | dirty[1] & /*$$scope*/ 134217728) {
-    				mapsource_changes.$$scope = { dirty, ctx };
-    			}
-
-    			mapsource.$set(mapsource_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(mapsource.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(mapsource.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(mapsource, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_default_slot_1$3.name,
-    		type: "slot",
-    		source: "(545:4) <Map id=\\\"map1\\\" style={mapstyle} bind:map interactive={false}  location={{bounds: mapbounds.uk}}>",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (542:1) 
-    function create_background_slot(ctx) {
-    	let div1;
-    	let figure;
-    	let div0;
-    	let map_1;
-    	let updating_map;
-    	let t;
-    	let iframe;
-    	let iframe_src_value;
-    	let current;
-
-    	function map_1_map_binding(value) {
-    		/*map_1_map_binding*/ ctx[27](value);
-    	}
-
-    	let map_1_props = {
-    		id: "map1",
-    		style: mapstyle,
-    		interactive: false,
-    		location: { bounds: /*mapbounds*/ ctx[13].uk },
-    		$$slots: { default: [create_default_slot_1$3] },
-    		$$scope: { ctx }
-    	};
-
-    	if (/*map*/ ctx[6] !== void 0) {
-    		map_1_props.map = /*map*/ ctx[6];
-    	}
-
-    	map_1 = new Map$1({ props: map_1_props, $$inline: true });
-    	binding_callbacks.push(() => bind(map_1, 'map', map_1_map_binding));
-
-    	const block = {
-    		c: function create() {
-    			div1 = element("div");
-    			figure = element("figure");
-    			div0 = element("div");
-    			create_component(map_1.$$.fragment);
-    			t = space();
-    			iframe = element("iframe");
-    			if (!src_url_equal(iframe.src, iframe_src_value = "chads_stuff.html")) attr_dev(iframe, "src", iframe_src_value);
-    			add_location(iframe, file$t, 571, 4, 17526);
-    			attr_dev(div0, "class", "col-full height-full");
-    			add_location(div0, file$t, 543, 3, 16587);
-    			add_location(figure, file$t, 542, 2, 16575);
-    			attr_dev(div1, "slot", "background");
-    			add_location(div1, file$t, 541, 1, 16549);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div1, anchor);
-    			append_dev(div1, figure);
-    			append_dev(figure, div0);
-    			mount_component(map_1, div0, null);
-    			append_dev(div0, t);
-    			append_dev(div0, iframe);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const map_1_changes = {};
-
-    			if (dirty[0] & /*geojson, selected, explore, hovered, mapHighlighted*/ 902 | dirty[1] & /*$$scope*/ 134217728) {
-    				map_1_changes.$$scope = { dirty, ctx };
-    			}
-
-    			if (!updating_map && dirty[0] & /*map*/ 64) {
-    				updating_map = true;
-    				map_1_changes.map = /*map*/ ctx[6];
-    				add_flush_callback(() => updating_map = false);
-    			}
-
-    			map_1.$set(map_1_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(map_1.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(map_1.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div1);
-    			destroy_component(map_1);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_background_slot.name,
-    		type: "slot",
-    		source: "(542:1) ",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (577:1) 
-    function create_foreground_slot(ctx) {
-    	let div2;
-    	let section0;
-    	let div0;
-    	let p0;
-    	let t1;
-    	let section1;
-    	let div1;
-    	let p1;
-
-    	const block = {
-    		c: function create() {
-    			div2 = element("div");
-    			section0 = element("section");
-    			div0 = element("div");
-    			p0 = element("p");
-    			p0.textContent = "This map shows the neighborhoods we want to rollout in, compared to the limited availability of Zipcar.";
-    			t1 = space();
-    			section1 = element("section");
-    			div1 = element("div");
-    			p1 = element("p");
-    			p1.textContent = "We're looking to";
-    			add_location(p0, file$t, 579, 4, 17676);
-    			attr_dev(div0, "class", "col-medium");
-    			add_location(div0, file$t, 578, 3, 17647);
-    			attr_dev(section0, "data-id", "map01");
-    			add_location(section0, file$t, 577, 2, 17618);
-    			add_location(p1, file$t, 586, 4, 17881);
-    			attr_dev(div1, "class", "col-medium");
-    			add_location(div1, file$t, 585, 3, 17852);
-    			attr_dev(section1, "data-id", "map02");
-    			add_location(section1, file$t, 584, 2, 17823);
-    			attr_dev(div2, "slot", "foreground");
-    			add_location(div2, file$t, 576, 1, 17592);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div2, anchor);
-    			append_dev(div2, section0);
-    			append_dev(section0, div0);
-    			append_dev(div0, p0);
-    			append_dev(div2, t1);
-    			append_dev(div2, section1);
-    			append_dev(section1, div1);
-    			append_dev(div1, p1);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div2);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_foreground_slot.name,
-    		type: "slot",
-    		source: "(577:1) ",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (623:0) <Section>
+    // (621:0) <Section>
     function create_default_slot$3(ctx) {
     	let h2;
     	let t1;
@@ -28012,13 +27681,13 @@ uniform `+P+" "+z+" u_"+k+`;
     			a1.textContent = "madison.carshare@gmail.com";
     			t8 = text(".");
     			attr_dev(h2, "id", "signup");
-    			add_location(h2, file$t, 623, 1, 18871);
+    			add_location(h2, file$t, 621, 1, 18659);
     			attr_dev(a0, "href", "https://forms.gle/p8iJkaLSgSe5JEmA7");
-    			add_location(a0, file$t, 625, 83, 18988);
-    			add_location(p0, file$t, 624, 1, 18901);
+    			add_location(a0, file$t, 623, 83, 18776);
+    			add_location(p0, file$t, 622, 1, 18689);
     			attr_dev(a1, "href", "mailto:madison.carshare@gmail.com");
-    			add_location(a1, file$t, 629, 79, 19278);
-    			add_location(p1, file$t, 628, 1, 19195);
+    			add_location(a1, file$t, 627, 79, 19066);
+    			add_location(p1, file$t, 626, 1, 18983);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -28046,7 +27715,7 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_default_slot$3.name,
     		type: "slot",
-    		source: "(623:0) <Section>",
+    		source: "(621:0) <Section>",
     		ctx
     	});
 
@@ -28084,15 +27753,6 @@ uniform `+P+" "+z+" u_"+k+`;
     	let t12;
     	let section4;
     	let t13;
-    	let divider5;
-    	let t14;
-    	let scroller2;
-    	let updating_id_2;
-    	let t15;
-    	let divider6;
-    	let t16;
-    	let section5;
-    	let t17;
     	let onsfooter;
     	let current;
 
@@ -28108,7 +27768,7 @@ uniform `+P+" "+z+" u_"+k+`;
     				theme: "light",
     				center: false,
     				short: true,
-    				$$slots: { default: [create_default_slot_10] },
+    				$$slots: { default: [create_default_slot_6] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -28116,7 +27776,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	section0 = new Section({
     			props: {
-    				$$slots: { default: [create_default_slot_9] },
+    				$$slots: { default: [create_default_slot_5] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -28125,15 +27785,15 @@ uniform `+P+" "+z+" u_"+k+`;
     	divider0 = new Divider({ $$inline: true });
 
     	function scroller0_id_binding(value) {
-    		/*scroller0_id_binding*/ ctx[24](value);
+    		/*scroller0_id_binding*/ ctx[15](value);
     	}
 
     	let scroller0_props = {
     		threshold,
     		splitscreen: true,
     		$$slots: {
-    			foreground: [create_foreground_slot_2],
-    			background: [create_background_slot_2]
+    			foreground: [create_foreground_slot_1],
+    			background: [create_background_slot_1]
     		},
     		$$scope: { ctx }
     	};
@@ -28148,21 +27808,21 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	section1 = new Section({
     			props: {
-    				$$slots: { default: [create_default_slot_7] },
+    				$$slots: { default: [create_default_slot_3$3] },
     				$$scope: { ctx }
     			},
     			$$inline: true
     		});
 
     	function scroller1_id_binding(value) {
-    		/*scroller1_id_binding*/ ctx[25](value);
+    		/*scroller1_id_binding*/ ctx[16](value);
     	}
 
     	let scroller1_props = {
     		threshold,
     		$$slots: {
-    			foreground: [create_foreground_slot_1],
-    			background: [create_background_slot_1]
+    			foreground: [create_foreground_slot],
+    			background: [create_background_slot]
     		},
     		$$scope: { ctx }
     	};
@@ -28177,7 +27837,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	section2 = new Section({
     			props: {
-    				$$slots: { default: [create_default_slot_6] },
+    				$$slots: { default: [create_default_slot_2$3] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -28187,7 +27847,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	section3 = new Section({
     			props: {
-    				$$slots: { default: [create_default_slot_5] },
+    				$$slots: { default: [create_default_slot_1$3] },
     				$$scope: { ctx }
     			},
     			$$inline: true
@@ -28196,37 +27856,6 @@ uniform `+P+" "+z+" u_"+k+`;
     	divider4 = new Divider({ $$inline: true });
 
     	section4 = new Section({
-    			props: {
-    				$$slots: { default: [create_default_slot_4] },
-    				$$scope: { ctx }
-    			},
-    			$$inline: true
-    		});
-
-    	divider5 = new Divider({ $$inline: true });
-
-    	function scroller2_id_binding(value) {
-    		/*scroller2_id_binding*/ ctx[28](value);
-    	}
-
-    	let scroller2_props = {
-    		threshold,
-    		$$slots: {
-    			foreground: [create_foreground_slot],
-    			background: [create_background_slot]
-    		},
-    		$$scope: { ctx }
-    	};
-
-    	if (/*id*/ ctx[0]['map'] !== void 0) {
-    		scroller2_props.id = /*id*/ ctx[0]['map'];
-    	}
-
-    	scroller2 = new Scroller({ props: scroller2_props, $$inline: true });
-    	binding_callbacks.push(() => bind(scroller2, 'id', scroller2_id_binding));
-    	divider6 = new Divider({ $$inline: true });
-
-    	section5 = new Section({
     			props: {
     				$$slots: { default: [create_default_slot$3] },
     				$$scope: { ctx }
@@ -28266,14 +27895,6 @@ uniform `+P+" "+z+" u_"+k+`;
     			t12 = space();
     			create_component(section4.$$.fragment);
     			t13 = space();
-    			create_component(divider5.$$.fragment);
-    			t14 = space();
-    			create_component(scroller2.$$.fragment);
-    			t15 = space();
-    			create_component(divider6.$$.fragment);
-    			t16 = space();
-    			create_component(section5.$$.fragment);
-    			t17 = space();
     			create_component(onsfooter.$$.fragment);
     		},
     		l: function claim(nodes) {
@@ -28308,35 +27929,27 @@ uniform `+P+" "+z+" u_"+k+`;
     			insert_dev(target, t12, anchor);
     			mount_component(section4, target, anchor);
     			insert_dev(target, t13, anchor);
-    			mount_component(divider5, target, anchor);
-    			insert_dev(target, t14, anchor);
-    			mount_component(scroller2, target, anchor);
-    			insert_dev(target, t15, anchor);
-    			mount_component(divider6, target, anchor);
-    			insert_dev(target, t16, anchor);
-    			mount_component(section5, target, anchor);
-    			insert_dev(target, t17, anchor);
     			mount_component(onsfooter, target, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			const header_changes = {};
 
-    			if (dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[1] & /*$$scope*/ 33554432) {
     				header_changes.$$scope = { dirty, ctx };
     			}
 
     			header.$set(header_changes);
     			const section0_changes = {};
 
-    			if (dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[1] & /*$$scope*/ 33554432) {
     				section0_changes.$$scope = { dirty, ctx };
     			}
 
     			section0.$set(section0_changes);
     			const scroller0_changes = {};
 
-    			if (dirty[0] & /*mileage_selected, mydata, selected_chart*/ 56 | dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[0] & /*mileage_selected, mydata, selected_chart*/ 14 | dirty[1] & /*$$scope*/ 33554432) {
     				scroller0_changes.$$scope = { dirty, ctx };
     			}
 
@@ -28349,14 +27962,14 @@ uniform `+P+" "+z+" u_"+k+`;
     			scroller0.$set(scroller0_changes);
     			const section1_changes = {};
 
-    			if (dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[1] & /*$$scope*/ 33554432) {
     				section1_changes.$$scope = { dirty, ctx };
     			}
 
     			section1.$set(section1_changes);
     			const scroller1_changes = {};
 
-    			if (dirty[0] & /*image_opacity*/ 1024 | dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[0] & /*image_opacity*/ 16 | dirty[1] & /*$$scope*/ 33554432) {
     				scroller1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -28369,45 +27982,25 @@ uniform `+P+" "+z+" u_"+k+`;
     			scroller1.$set(scroller1_changes);
     			const section2_changes = {};
 
-    			if (dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[1] & /*$$scope*/ 33554432) {
     				section2_changes.$$scope = { dirty, ctx };
     			}
 
     			section2.$set(section2_changes);
     			const section3_changes = {};
 
-    			if (dirty[0] & /*words*/ 2048 | dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[0] & /*words*/ 32 | dirty[1] & /*$$scope*/ 33554432) {
     				section3_changes.$$scope = { dirty, ctx };
     			}
 
     			section3.$set(section3_changes);
     			const section4_changes = {};
 
-    			if (dirty[1] & /*$$scope*/ 134217728) {
+    			if (dirty[1] & /*$$scope*/ 33554432) {
     				section4_changes.$$scope = { dirty, ctx };
     			}
 
     			section4.$set(section4_changes);
-    			const scroller2_changes = {};
-
-    			if (dirty[0] & /*map, geojson, selected, explore, hovered, mapHighlighted*/ 966 | dirty[1] & /*$$scope*/ 134217728) {
-    				scroller2_changes.$$scope = { dirty, ctx };
-    			}
-
-    			if (!updating_id_2 && dirty[0] & /*id*/ 1) {
-    				updating_id_2 = true;
-    				scroller2_changes.id = /*id*/ ctx[0]['map'];
-    				add_flush_callback(() => updating_id_2 = false);
-    			}
-
-    			scroller2.$set(scroller2_changes);
-    			const section5_changes = {};
-
-    			if (dirty[1] & /*$$scope*/ 134217728) {
-    				section5_changes.$$scope = { dirty, ctx };
-    			}
-
-    			section5.$set(section5_changes);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -28425,10 +28018,6 @@ uniform `+P+" "+z+" u_"+k+`;
     			transition_in(section3.$$.fragment, local);
     			transition_in(divider4.$$.fragment, local);
     			transition_in(section4.$$.fragment, local);
-    			transition_in(divider5.$$.fragment, local);
-    			transition_in(scroller2.$$.fragment, local);
-    			transition_in(divider6.$$.fragment, local);
-    			transition_in(section5.$$.fragment, local);
     			transition_in(onsfooter.$$.fragment, local);
     			current = true;
     		},
@@ -28447,10 +28036,6 @@ uniform `+P+" "+z+" u_"+k+`;
     			transition_out(section3.$$.fragment, local);
     			transition_out(divider4.$$.fragment, local);
     			transition_out(section4.$$.fragment, local);
-    			transition_out(divider5.$$.fragment, local);
-    			transition_out(scroller2.$$.fragment, local);
-    			transition_out(divider6.$$.fragment, local);
-    			transition_out(section5.$$.fragment, local);
     			transition_out(onsfooter.$$.fragment, local);
     			current = false;
     		},
@@ -28483,14 +28068,6 @@ uniform `+P+" "+z+" u_"+k+`;
     			if (detaching) detach_dev(t12);
     			destroy_component(section4, detaching);
     			if (detaching) detach_dev(t13);
-    			destroy_component(divider5, detaching);
-    			if (detaching) detach_dev(t14);
-    			destroy_component(scroller2, detaching);
-    			if (detaching) detach_dev(t15);
-    			destroy_component(divider6, detaching);
-    			if (detaching) detach_dev(t16);
-    			destroy_component(section5, detaching);
-    			if (detaching) detach_dev(t17);
     			destroy_component(onsfooter, detaching);
     		}
     	};
@@ -28661,12 +28238,12 @@ uniform `+P+" "+z+" u_"+k+`;
     	// FUNCTIONS (INCL. SCROLLER ACTIONS)
     	// Functions for chart and map on:select and on:hover events
     	function doSelect(e) {
-    		$$invalidate(1, selected = e.detail.id);
+    		$$invalidate(10, selected = e.detail.id);
     		if (e.detail.feature) ; // Fit map if select event comes from map
     	}
 
     	function doHover(e) {
-    		$$invalidate(7, hovered = e.detail.id);
+    		hovered = e.detail.id;
     	}
 
     	// Functions for map component
@@ -28689,62 +28266,62 @@ uniform `+P+" "+z+" u_"+k+`;
     				fitBounds(mapbounds.uk);
 
     				mapKey = "density";
-    				$$invalidate(8, mapHighlighted = []);
-    				$$invalidate(9, explore = false);
+    				mapHighlighted = [];
+    				explore = false;
     			},
     			map02: () => {
     				fitBounds(mapbounds.uk);
     				mapKey = "age_med";
-    				$$invalidate(8, mapHighlighted = []);
-    				$$invalidate(9, explore = false);
+    				mapHighlighted = [];
+    				explore = false;
     			},
     			map03: () => {
     				let hl = [...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0];
     				fitById(hl.code);
     				mapKey = "age_med";
-    				$$invalidate(8, mapHighlighted = [hl.code]);
-    				$$invalidate(9, explore = false);
+    				mapHighlighted = [hl.code];
+    				explore = false;
     			},
     			map04: () => {
     				fitBounds(mapbounds.uk);
     				mapKey = "age_med";
-    				$$invalidate(8, mapHighlighted = []);
-    				$$invalidate(9, explore = true);
+    				mapHighlighted = [];
+    				explore = true;
     			}
     		},
     		chart: {
     			chart01: () => {
-    				$$invalidate(3, selected_chart = null);
+    				$$invalidate(1, selected_chart = null);
     			},
     			chart02: () => {
-    				$$invalidate(3, selected_chart = "New Car");
+    				$$invalidate(1, selected_chart = "New Car");
     			},
     			chart03: () => {
-    				$$invalidate(3, selected_chart = "Down The Block");
+    				$$invalidate(1, selected_chart = "Down The Block");
     			},
     			chart04: () => {
-    				$$invalidate(3, selected_chart = null);
+    				$$invalidate(1, selected_chart = null);
     			},
     			chart05: () => {
-    				$$invalidate(3, selected_chart = null);
+    				$$invalidate(1, selected_chart = null);
     			}
     		},
     		image: {
     			// Actions for <Scroller/> with id="map"
     			image01: () => {
-    				$$invalidate(10, image_opacity = 1);
+    				$$invalidate(4, image_opacity = 1);
     			},
     			image02: () => {
-    				$$invalidate(10, image_opacity = 0);
+    				$$invalidate(4, image_opacity = 0);
     			}
     		},
     		words: {
     			// Actions for <Scroller/> with id="map"
     			words01: () => {
-    				$$invalidate(11, words = words1);
+    				$$invalidate(5, words = words1);
     			},
     			words02: () => {
-    				$$invalidate(11, words = words2);
+    				$$invalidate(5, words = words2);
     			}
     		}
     	};
@@ -28777,8 +28354,8 @@ uniform `+P+" "+z+" u_"+k+`;
     				lookup[d.code] = d;
     			});
 
-    			$$invalidate(19, metadata[geo].array = meta, metadata);
-    			$$invalidate(19, metadata[geo].lookup = lookup, metadata);
+    			$$invalidate(9, metadata[geo].array = meta, metadata);
+    			$$invalidate(9, metadata[geo].lookup = lookup, metadata);
 
     			let indicators = arr.map((d, i) => ({
     				...meta[i],
@@ -28840,7 +28417,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	getTopo(topojson).then(geo => {
     		// geo.features.sort((a, b) => a.properties.AREANM.localeCompare(b.properties.AREANM));
-    		$$invalidate(2, geojson = geo);
+    		geojson = geo;
 
     		let vals = geojson['features'].map(d => d.properties['B08201001']).sort((a, b) => a - b);
     		let len = vals.length;
@@ -28870,20 +28447,20 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	function select_change_handler() {
     		mileage_selected = select_value(this);
-    		$$invalidate(5, mileage_selected);
-    		$$invalidate(15, mileage_choices);
+    		$$invalidate(3, mileage_selected);
+    		$$invalidate(7, mileage_choices);
     	}
 
     	function linechart_1_data_binding(value) {
     		if ($$self.$$.not_equal(mydata[mileage_selected], value)) {
     			mydata[mileage_selected] = value;
-    			$$invalidate(4, mydata);
+    			$$invalidate(2, mydata);
     		}
     	}
 
     	function linechart_1_selected_binding(value) {
     		selected_chart = value;
-    		$$invalidate(3, selected_chart);
+    		$$invalidate(1, selected_chart);
     	}
 
     	function scroller0_id_binding(value) {
@@ -28902,19 +28479,7 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	function wordcloud_words_binding(value) {
     		words = value;
-    		$$invalidate(11, words);
-    	}
-
-    	function map_1_map_binding(value) {
-    		map = value;
-    		$$invalidate(6, map);
-    	}
-
-    	function scroller2_id_binding(value) {
-    		if ($$self.$$.not_equal(id['map'], value)) {
-    			id['map'] = value;
-    			$$invalidate(0, id);
-    		}
+    		$$invalidate(5, words);
     	}
 
     	$$self.$capture_state = () => ({
@@ -29004,14 +28569,14 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	$$self.$inject_state = $$props => {
     		if ('theme' in $$props) theme = $$props.theme;
-    		if ('animation' in $$props) $$invalidate(12, animation = $$props.animation);
+    		if ('animation' in $$props) $$invalidate(6, animation = $$props.animation);
     		if ('id' in $$props) $$invalidate(0, id = $$props.id);
     		if ('idPrev' in $$props) idPrev = $$props.idPrev;
     		if ('linechart' in $$props) linechart = $$props.linechart;
     		if ('data' in $$props) data = $$props.data;
-    		if ('subdata' in $$props) $$invalidate(14, subdata = $$props.subdata);
-    		if ('metadata' in $$props) $$invalidate(19, metadata = $$props.metadata);
-    		if ('geojson' in $$props) $$invalidate(2, geojson = $$props.geojson);
+    		if ('subdata' in $$props) subdata = $$props.subdata;
+    		if ('metadata' in $$props) $$invalidate(9, metadata = $$props.metadata);
+    		if ('geojson' in $$props) geojson = $$props.geojson;
     		if ('words1' in $$props) words1 = $$props.words1;
     		if ('words2' in $$props) words2 = $$props.words2;
     		if ('start_year' in $$props) start_year = $$props.start_year;
@@ -29023,24 +28588,24 @@ uniform `+P+" "+z+" u_"+k+`;
     		if ('zipcar_cpm' in $$props) zipcar_cpm = $$props.zipcar_cpm;
     		if ('downtheblock_memb' in $$props) downtheblock_memb = $$props.downtheblock_memb;
     		if ('downtheblock_cpm' in $$props) downtheblock_cpm = $$props.downtheblock_cpm;
-    		if ('selected_chart' in $$props) $$invalidate(3, selected_chart = $$props.selected_chart);
-    		if ('mileage_choices' in $$props) $$invalidate(15, mileage_choices = $$props.mileage_choices);
-    		if ('mydata' in $$props) $$invalidate(4, mydata = $$props.mydata);
-    		if ('mileage_selected' in $$props) $$invalidate(5, mileage_selected = $$props.mileage_selected);
-    		if ('map' in $$props) $$invalidate(6, map = $$props.map);
-    		if ('hovered' in $$props) $$invalidate(7, hovered = $$props.hovered);
-    		if ('selected' in $$props) $$invalidate(1, selected = $$props.selected);
-    		if ('mapHighlighted' in $$props) $$invalidate(8, mapHighlighted = $$props.mapHighlighted);
+    		if ('selected_chart' in $$props) $$invalidate(1, selected_chart = $$props.selected_chart);
+    		if ('mileage_choices' in $$props) $$invalidate(7, mileage_choices = $$props.mileage_choices);
+    		if ('mydata' in $$props) $$invalidate(2, mydata = $$props.mydata);
+    		if ('mileage_selected' in $$props) $$invalidate(3, mileage_selected = $$props.mileage_selected);
+    		if ('map' in $$props) map = $$props.map;
+    		if ('hovered' in $$props) hovered = $$props.hovered;
+    		if ('selected' in $$props) $$invalidate(10, selected = $$props.selected);
+    		if ('mapHighlighted' in $$props) mapHighlighted = $$props.mapHighlighted;
     		if ('xKey' in $$props) xKey = $$props.xKey;
     		if ('yKey' in $$props) yKey = $$props.yKey;
     		if ('zKey' in $$props) zKey = $$props.zKey;
     		if ('rKey' in $$props) rKey = $$props.rKey;
     		if ('mapKey' in $$props) mapKey = $$props.mapKey;
-    		if ('explore' in $$props) $$invalidate(9, explore = $$props.explore);
-    		if ('image_image' in $$props) $$invalidate(16, image_image = $$props.image_image);
-    		if ('image_opacity' in $$props) $$invalidate(10, image_opacity = $$props.image_opacity);
-    		if ('words' in $$props) $$invalidate(11, words = $$props.words);
-    		if ('region' in $$props) $$invalidate(20, region = $$props.region);
+    		if ('explore' in $$props) explore = $$props.explore;
+    		if ('image_image' in $$props) $$invalidate(8, image_image = $$props.image_image);
+    		if ('image_opacity' in $$props) $$invalidate(4, image_opacity = $$props.image_opacity);
+    		if ('words' in $$props) $$invalidate(5, words = $$props.words);
+    		if ('region' in $$props) $$invalidate(11, region = $$props.region);
     		if ('chartHighlighted' in $$props) chartHighlighted = $$props.chartHighlighted;
     	};
 
@@ -29049,13 +28614,13 @@ uniform `+P+" "+z+" u_"+k+`;
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*selected, metadata*/ 524290) {
-    			 $$invalidate(20, region = selected && metadata.district.lookup
+    		if ($$self.$$.dirty[0] & /*selected, metadata*/ 1536) {
+    			 $$invalidate(11, region = selected && metadata.district.lookup
     			? metadata.district.lookup[selected].parent
     			: null); // Gets region code for 'selected'
     		}
 
-    		if ($$self.$$.dirty[0] & /*metadata, region*/ 1572864) {
+    		if ($$self.$$.dirty[0] & /*metadata, region*/ 2560) {
     			 chartHighlighted = metadata.district.array && region
     			? metadata.district.array.filter(d => d.parent == region).map(d => d.code)
     			: []; // Array of district codes in 'region'
@@ -29068,34 +28633,23 @@ uniform `+P+" "+z+" u_"+k+`;
 
     	return [
     		id,
-    		selected,
-    		geojson,
     		selected_chart,
     		mydata,
     		mileage_selected,
-    		map,
-    		hovered,
-    		mapHighlighted,
-    		explore,
     		image_opacity,
     		words,
     		animation,
-    		mapbounds,
-    		subdata,
     		mileage_choices,
     		image_image,
-    		doSelect,
-    		doHover,
     		metadata,
+    		selected,
     		region,
     		select_change_handler,
     		linechart_1_data_binding,
     		linechart_1_selected_binding,
     		scroller0_id_binding,
     		scroller1_id_binding,
-    		wordcloud_words_binding,
-    		map_1_map_binding,
-    		scroller2_id_binding
+    		wordcloud_words_binding
     	];
     }
 

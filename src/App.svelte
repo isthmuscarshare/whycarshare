@@ -528,7 +528,7 @@ import WordCloud from "svelte-d3-cloud";
 
 
 <Divider />
-
+<!-- 
 
 <Section>
 	<h2>Getting around with Down the Block</h2>
@@ -563,9 +563,7 @@ import WordCloud from "svelte-d3-cloud";
 							'line-width': 10
 						}}
 					  	>
-								<!-- <MapTooltip content={
-									hovered ? `${metadata.district.lookup[hovered].name}<br/><strong>${data.district.indicators.find(d => d.code == hovered)[mapKey].toLocaleString()} ${units[mapKey]}</strong>` : ''
-								}/> -->
+								
 							</MapLayer>
 				  </MapSource>
 				</Map>
@@ -588,7 +586,7 @@ import WordCloud from "svelte-d3-cloud";
 					We're looking to 
 				</p>
 			</div>
-		</section>
+		</section> -->
 		<!-- <section data-id="map03">
 			<div class="col-medium">
 				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
@@ -614,11 +612,11 @@ import WordCloud from "svelte-d3-cloud";
 					</p>
 			</div>
 		</section> -->
-	</div>
+	<!-- </div>
 </Scroller>
 
 
-<Divider />
+<Divider /> -->
 
 <Section>
 	<h2 id="signup">Help us</h2>
