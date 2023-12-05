@@ -528,7 +528,7 @@ import WordCloud from "svelte-d3-cloud";
 
 
 <Divider />
-<!-- 
+
 
 <Section>
 	<h2>Getting around with Down the Block</h2>
@@ -538,11 +538,13 @@ import WordCloud from "svelte-d3-cloud";
 </Section>
 <Divider />
 
+<link rel="stylesheet" type="text/css" href="style.css" />
+
 <Scroller {threshold} bind:id={id['map']}>
 	<div slot="background">
 		<figure>
 			<div class="col-full height-full">  
-				<Map id="map1" style={mapstyle} bind:map interactive={false}  location={{bounds: mapbounds.uk}}>
+				<!-- <Map id="map1" style={mapstyle} bind:map interactive={false}  location={{bounds: mapbounds.uk}}>
 					<MapSource
 					  id="lad"
 					  type="geojson"
@@ -566,8 +568,32 @@ import WordCloud from "svelte-d3-cloud";
 								
 							</MapLayer>
 				  </MapSource>
-				</Map>
-				<iframe src="chads_stuff.html" />
+				</Map> -->
+				<div id="floating-panel">
+					<b>Start: </b>
+					<select id="start">
+					  <option value="Tenney Park, Madison, WI">Tenney-Lapham</option>
+					  <option value="Atwood Ave, Madison, WI">Atwood</option>
+					  <option value="Hilldale Mall, Madison, WI">Hilldale</option>
+					</select>
+					<b>End: </b>
+					<select id="end">
+					  <option value="2880 Longenecker Dr, Madison, WI">UW Arboretum</option>
+					  <option value="State Street, Madison, WI">State Street</option>
+					  <option value="Memorial Union, Madison, WI">Memorial Union</option>
+					  <option value="Sun Prairie, WI">Sun Prairie</option>
+					  <option value="West Towne Mall, Madison, WI">West Towne Mall</option>
+					  <option value="Fitchburg, WI">Fitchburg</option>
+					  <option value="Devil's Lake State Park, WI">Devil's Lake</option>
+					  <option value="Peninsula State Park, WI">Door County</option>
+					</select>
+				  </div>
+			  
+			  
+			  
+				  <div id="map"></div>
+				  <script src="map_route_popups.js"></script>
+				  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh9hqfHN3V8t-sJDNZR2q1hXNdt_08K00&callback=initMap&libraries=places&v=weekly" defer></script>
 			</div>
 		</figure>
 	</div>
@@ -586,7 +612,7 @@ import WordCloud from "svelte-d3-cloud";
 					We're looking to 
 				</p>
 			</div>
-		</section> -->
+		</section>
 		<!-- <section data-id="map03">
 			<div class="col-medium">
 				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
@@ -612,11 +638,11 @@ import WordCloud from "svelte-d3-cloud";
 					</p>
 			</div>
 		</section> -->
-	<!-- </div>
+	</div>
 </Scroller>
 
 
-<Divider /> -->
+<Divider />
 
 <Section>
 	<h2 id="signup">Help us</h2>
