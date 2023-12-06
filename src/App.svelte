@@ -538,67 +538,17 @@ import WordCloud from "svelte-d3-cloud";
 </Section>
 <Divider />
 
-<link rel="stylesheet" type="text/css" href="style.css" />
-
+<div >
+	<figure>
+		<div class="col-full height-full">  
+			<iframe src="https://stedn.github.io/down-the-block/map_route_popups/map_route_popups.html" onload="this.width=screen.width;this.height=0.8*screen.height;"></iframe>
+		</div>
+	</figure>
+</div>
 <Scroller {threshold} bind:id={id['map']}>
-	<div slot="background">
-		<figure>
-			<div class="col-full height-full">  
-				<!-- <Map id="map1" style={mapstyle} bind:map interactive={false}  location={{bounds: mapbounds.uk}}>
-					<MapSource
-					  id="lad"
-					  type="geojson"
-					  data={geojson}
-					  promoteId="geoid"
-					  maxzoom={17}>
-					  <MapLayer
-					  	id="lad-fill"
-						idKey="geoid"
-						colorKey="color"
-					  	data={subdata}
-					  	type="line"
-						select {selected} on:select={doSelect} clickIgnore={!explore}
-						hover {hovered} on:hover={doHover}
-						highlight highlighted={mapHighlighted}
-						paint={{
-							'line-color':  ['feature-state', 'color'],
-							'line-width': 10
-						}}
-					  	>
-								
-							</MapLayer>
-				  </MapSource>
-				</Map> -->
-				<div id="floating-panel">
-					<b>Start: </b>
-					<select id="start">
-					  <option value="Tenney Park, Madison, WI">Tenney-Lapham</option>
-					  <option value="Atwood Ave, Madison, WI">Atwood</option>
-					  <option value="Hilldale Mall, Madison, WI">Hilldale</option>
-					</select>
-					<b>End: </b>
-					<select id="end">
-					  <option value="2880 Longenecker Dr, Madison, WI">UW Arboretum</option>
-					  <option value="State Street, Madison, WI">State Street</option>
-					  <option value="Memorial Union, Madison, WI">Memorial Union</option>
-					  <option value="Sun Prairie, WI">Sun Prairie</option>
-					  <option value="West Towne Mall, Madison, WI">West Towne Mall</option>
-					  <option value="Fitchburg, WI">Fitchburg</option>
-					  <option value="Devil's Lake State Park, WI">Devil's Lake</option>
-					  <option value="Peninsula State Park, WI">Door County</option>
-					</select>
-				  </div>
-			  
-			  
-			  
-				  <div id="map"></div>
-				  <script src="map_route_popups.js"></script>
-				  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh9hqfHN3V8t-sJDNZR2q1hXNdt_08K00&callback=initMap&libraries=places&v=weekly" defer></script>
-			</div>
-		</figure>
-	</div>
+	
 
-	<div slot="foreground">
+	<!-- <div slot="foreground">
 		<section data-id="map01">
 			<div class="col-medium">
 				<p>
@@ -613,32 +563,8 @@ import WordCloud from "svelte-d3-cloud";
 				</p>
 			</div>
 		</section>
-		<!-- <section data-id="map03">
-			<div class="col-medium">
-				{#each [[...data.district.indicators].sort((a, b) => b.age_med - a.age_med)[0]] as district}
-				<p>
-					The map is now zoomed on <Em color={district.age_med_color}>{district.name}</Em>, the district with the oldest median age, {district.age_med} years.
-				</p>
-				{/each}
-			</div>
-		</section>
-		<section data-id="map04">
-			<div class="col-medium">
-				<h3>Select a district</h3>
-				<p>Use the selection box below or click on the map to select and zoom to a district.</p>
-					<p>
-						<select bind:value={selected} on:change={() => fitById(selected)}>
-							<option value={null}>Select one</option>
-							{#each geojson.features as place}
-								<option value={place.properties.AREACD}>
-									{place.properties.AREANM}
-								</option>
-							{/each}
-						</select>
-					</p>
-			</div>
-		</section> -->
-	</div>
+		
+	</div> -->
 </Scroller>
 
 
