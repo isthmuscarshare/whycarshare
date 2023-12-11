@@ -64,15 +64,19 @@ function initMap() {
       this.statsDisplay = new google.maps.InfoWindow();
   
       // Add custom slider for how long the user wants to stay at a destination
-      //this.slider = document.getElementById("myRange");
-      //this.output = document.getElementById("duration_slider");
-      // this.estimatedCost = document.getElementById("travelstats");
+      // this.slider = document.getElementById("myRange");
+      this.slider = document.getElementById("time_dropdown");
+      // this.output = document.getElementById("duration_slider");
+      this.output = this.slider;
+      this.travelPriceInfo = document.getElementById("travelstats");
+      this.travelPriceInfoDB = document.getElementById("travelstatsdb");
+      this.travelPriceInfoZC = document.getElementById("travelstatszc");
       this.estimatedCost = "";
   
       // Create a renderer for directions and bind it to the map.
       var rendererOptions = {
         map: map,
-        suppressMarkers: true,
+        suppressMarkers: false,
         // preserveViewport: true
       }
       this.directionsRenderer = new google.maps.DirectionsRenderer(rendererOptions);
@@ -83,6 +87,8 @@ function initMap() {
       //   // calculateAndDisplayRoute(this.directionsService, this.directionsRenderer);
       //   this.manual_route();
       // };
+
+      this.manual_route();
     
       document.getElementById("start").addEventListener("change", () => {this.manual_route()});
       document.getElementById("end").addEventListener("change", () => {this.manual_route()});
@@ -105,6 +111,7 @@ function initMap() {
       this.deleteMarkers(markerArray);
       const originInput = document.getElementById("start");
       const destinationInput = document.getElementById("end");
+      const slider = document.getElementById("time_dropdown");
       this.directionsService.route(
         {
           origin: {
@@ -126,9 +133,10 @@ function initMap() {
             // Do stuff with the response
             // this.showStats(response,this.markerArray,this.stepDisplay,this.map);
             // this.showSteps(response,this.markerArray,this.stepDisplay,this.map);
-  
-            me.returnCost(response,this.slider,this.output);
-            me.showPrices(response, this.stepDisplay, this.map, this.estimatedCost);
+            //console.log(slider.value);
+            // me.returnCost(response,this.slider,this.output);
+            me.returnCost(response,slider,this.output);
+            //me.showPrices(response, this.stepDisplay, this.map, this.estimatedCost);
           } else {
             window.alert("Directions request failed due to " + status);
           }
@@ -137,39 +145,40 @@ function initMap() {
     
     } // end route
 
-      calculateAndDisplayRoute(directionsService, directionsRenderer) {
-      directionsService
-        .route({
-          origin: {
-            query: document.getElementById("start").value,
-          },
-          destination: {
-            query: document.getElementById("end").value,
-          },
-          travelMode: google.maps.TravelMode.DRIVING,
-        })
-        .then((response) => {
-          directionsRenderer.setDirections(response);
-          this.returnCost(response,this.slider,this.output);
-          this.showPrices(response, this.stepDisplay, this.map, this.estimatedCost);
-        })
-        .catch((e) => window.alert("Directions request failed due to " + status));
-    }
+    //   calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    //   directionsService
+    //     .route({
+    //       origin: {
+    //         query: document.getElementById("start").value,
+    //       },
+    //       destination: {
+    //         query: document.getElementById("end").value,
+    //       },
+    //       travelMode: google.maps.TravelMode.DRIVING,
+    //     })
+    //     .then((response) => {
+    //       directionsRenderer.setDirections(response);
+    //       this.returnCost(response,this.slider,this.output);
+    //       this.showPrices(response, this.stepDisplay, this.map, this.estimatedCost);
+    //     })
+    //     .catch((e) => window.alert("Directions request failed due to " + status));
+    // }
 
     // For calculating and showing duration, distance, and cost
     // factoring in input from slider
     returnCost(directionResult,slider,output) {
+      //console.log(slider.value);
       // Show distance, time of round-trip travel
       const myRoute = directionResult.routes[0].legs[0];
 
       const meters_to_mile = 0.000621371;
       const seconds_to_hour = 0.000277778; 
 
-      const cost_per_mile = 1.5;
-      const cost_per_hour = 3.0;
+      const cost_per_mile = 0.45;
+      const cost_per_hour = 2.0;
 
-      const cost_per_mile_zip = 2.5;
-      const cost_per_hour_zip = 12.0;
+      const cost_per_mile_zip = 0.58;
+      const cost_per_hour_zip = 14.0;
 
 
       // Calculate travel time and distance, multiplying by 2 to make it a round trip
@@ -179,15 +188,55 @@ function initMap() {
       // Calculate cost as minimum of time and distance-based estimate, adding an hour for shopping, etc.
       // var cost = Math.min((slider.value/60.0 + travel_time)*cost_per_hour, travel_distance*cost_per_mile);
       // var cost_zip = Math.min((slider.value/60.0 + travel_time)*cost_per_hour_zip, travel_distance*cost_per_mile_zip);
+      
+      var cost = (parseFloat(slider.value) + travel_time)*cost_per_hour + travel_distance*cost_per_mile;
+      var cost_zip = (parseFloat(slider.value) + travel_time)*cost_per_hour_zip + Math.max(travel_distance-180.0, 0.0)*cost_per_mile_zip;
 
-      var cost = Math.min((60.0/60.0 + travel_time)*cost_per_hour, travel_distance*cost_per_mile);
-      var cost_zip = Math.min((60.0/60.0 + travel_time)*cost_per_hour_zip, travel_distance*cost_per_mile_zip);
-
+      // output.innerHTML = slider.value;
 
       this.estimatedCost = "Down the Block: $" + String(cost.toFixed(2)) + "<br>"
-        + "ZipCar: $" + String(cost_zip.toFixed(2));
-    
+      + "ZipCar: $" + String(cost_zip.toFixed(2));
+
+      this.travelPriceInfo.innerHTML = "Factoring in a travel time of " + String(travel_time.toFixed(2)) + " hours" + "<br>" 
+        + "and driving distance of " + String(travel_distance.toFixed(2)) + " miles..." + "<br>";
+        // + "<br>"
+        // + "Cost with Down the Block: $" + String(cost.toFixed(2)) + "<br>"
+        // + "Cost with ZipCar: $" + String(cost_zip.toFixed(2));
+      this.travelPriceInfoDB.innerHTML = "$" +String(cost.toFixed(2));
+
+      this.travelPriceInfoZC.innerHTML = "$" +String(cost_zip.toFixed(2));
+
+      // document.getElementById("myRange").addEventListener("input", () => {this.update_cost_from_slider(travel_time, travel_distance, cost_per_hour, cost_per_hour_zip, cost_per_mile, cost_per_mile_zip, slider)});
+      document.getElementById("time_dropdown").addEventListener("change", () => {this.update_cost_from_slider(travel_time, travel_distance, cost_per_hour, cost_per_hour_zip, cost_per_mile, cost_per_mile_zip, slider)});
+      
     }
+
+    update_cost_from_slider(travel_time, travel_distance, cost_per_hour, cost_per_hour_zip, cost_per_mile, cost_per_mile_zip, slider) {
+      // print value below slider
+      //output.innerHTML = this.value;
+      var cost = (parseFloat(slider.value) + travel_time)*cost_per_hour + travel_distance*cost_per_mile;
+      var cost_zip = (parseFloat(slider.value) + travel_time)*cost_per_hour_zip + Math.max(travel_distance-180.0, 0.0)*cost_per_mile_zip;
+
+      this.estimatedCost = "Down the Block: $" + String(cost.toFixed(2)) + "<br>"
+      + "ZipCar: $" + String(cost_zip.toFixed(2));
+
+      // this.travelPriceInfo.innerHTML = "Factoring in a travel time of " + String(travel_time.toFixed(2)) + " hours" + "<br>" 
+      //   + "and driving distance of " + String(travel_distance.toFixed(2)) + " miles..." + "<br>"
+      //   + "<br>"
+      //   + "Cost with Down the Block: $" + String(cost.toFixed(2)) + "<br>"
+      //   + "Cost with ZipCar: $" + String(cost_zip.toFixed(2));
+
+      this.travelPriceInfo.innerHTML = "Factoring in a travel time of " + String(travel_time.toFixed(2)) + " hours" + "<br>" 
+      + "and driving distance of " + String(travel_distance.toFixed(2)) + " miles..." + "<br>";
+      // + "<br>"
+      // + "Cost with Down the Block: $" + String(cost.toFixed(2)) + "<br>"
+      // + "Cost with ZipCar: $" + String(cost_zip.toFixed(2));
+      this.travelPriceInfoDB.innerHTML = "$" +String(cost.toFixed(2));
+
+      this.travelPriceInfoZC.innerHTML = "$" + String(cost_zip.toFixed(2));
+
+      // this.output.innerHTML = slider.value;
+      }
 
     // For annotating prices of route including wait time determined by slider
     showPrices(directionResult, stepDisplay, map, estimatedCost) {
