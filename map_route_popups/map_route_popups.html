@@ -20,13 +20,13 @@
     <div id="floating-panel">
       <b>Start: </b>
       <select id="start">
-        <option value="Tenney Park, Madison, WI">Tenney-Lapham</option>
+        <option value="Tenney Park, Madison, WI" selected>Tenney-Lapham</option>
         <option value="Atwood Ave, Madison, WI">Atwood</option>
         <option value="Hilldale Mall, Madison, WI">Hilldale</option>
       </select>
       <b>End: </b>
       <select id="end">
-        <option value="2880 Longenecker Dr, Madison, WI">UW Arboretum</option>
+        <option value="2880 Longenecker Dr, Madison, WI" selected>UW Arboretum</option>
         <option value="State Street, Madison, WI">State Street</option>
         <option value="Memorial Union, Madison, WI">Memorial Union</option>
         <option value="Sun Prairie, WI">Sun Prairie</option>
@@ -35,6 +35,74 @@
         <option value="Devil's Lake State Park, WI">Devil's Lake</option>
         <option value="Peninsula State Park, WI">Door County</option>
       </select>
+
+      <p> <br> </p>
+
+      <!-- <h3>Travel Duration</h3> -->
+      <!-- <p style = "font-size:12px;"> How long you plan to stay at your destination: <br> <span id="duration_slider"></span> minutes</p> -->
+      <p style = "font-size:14px;"> How long do you plan to stay at your destination? </p>
+      <!-- <p>Value: <span id="duration_slider"></span></p> -->
+
+      <select id="time_dropdown">
+        <option value=0.0>0 hours</option>
+        <option value=1.0 selected>1 hour</option>
+        <option value=2.0>2 hours</option>
+        <option value=3.0>3 hours</option>
+        <option value=4.0>4 hours</option>
+        <option value=5.0>5 hours</option>
+        <option value=6.0>6 hours</option>
+        <option value=7.0>7 hours</option>
+      </select>
+
+      <!-- <div class="dropdown">
+        <button class="dropbtn">Dropdown</button>
+        <div class="dropdown-content">
+          <option value=0>0 hours</option>
+          <option value=1>1 hour</option>
+          <option value=2>2 hours</option>
+          <option value=3>3 hours</option>
+          <option value=4>4 hours</option>
+          <option value=5>5 hours</option>
+          <option value=6>6 hours</option>
+          <option value=7>7 hours</option>
+        </div>
+      </div> -->
+
+      <!-- <div class="slidecontainer">
+        <input type="range" min="1" max="180" value="60" class="slider" id="myRange">
+        <p>Value: <span id="duration_slider"></span></p>
+      </div> -->
+      <p> <br> </p>
+      <h3 style="font-size: 14px; text-align: center;"> Cost Estimates</h3>
+      <pre style="font-size: 12px;"> <span style="font-size: 14px;" id="travelstats"></span></pre>
+
+      <!-- <h3 style="font-size: 12px; text-align: center;">Pricing Assumptions</h3> -->
+
+      <div class="row">
+        <div class="column" style="background-color:#c4bebe;">
+          <h2 style="font-size: 14px;">ZipCar</h2>
+          <p style="font-size: 12px;"> <span style="font-size: 14px;" id="travelstatszc"></span> <br> <br> </p>
+          <h3 style="font-size: 12px; text-align: center;">Pricing</h3> 
+          <p>$14/hour* <br> $0.58/mile^ <br> <br></p>
+          <p style = "font-size:10px; text-align: left;"> *estimated <br> ^for every mile over 180 miles/day</p>
+          <!-- <p style = "font-size:10px; text-align: left;"> ^for every mile over 180 miles/day </p> -->
+        </div>
+        <div class="column" style="background-color:#b4f4d4;">
+          <h2 style="font-size: 14px;">Down the Block</h2>
+          <p style="font-size: 12px;"> <span style="font-size: 14px;" id="travelstatsdb"></span> <br> <br></p>
+          <h3 style="font-size: 12px; text-align: center;">Pricing</h3> 
+          <p>$2/hour <br> $0.45/mile</p>
+        </div>
+      </div>
+
+      
+
+      <!-- <h3 style="font-size: 12px; text-align: left;">Pricing Assumptions</h3>
+      <p style= "font-size: 10px; text-align: left;"> Down the Block: $2/hour, $0.45/mile
+      <br> ZipCar: $14/hour, $0.58/mile^ </p> -->
+
+      <!-- <p style = "font-size:10px; text-align: left;"> ^for every mile over 180 miles/day </p> -->
+    <!-- </div> -->
     </div>
 
       <!-- <div style="display: none">
