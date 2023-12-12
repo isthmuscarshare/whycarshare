@@ -9,7 +9,7 @@
 
 <nav style="border-bottom-color: {themes[theme]['muted']}; {filled ? 'background-color: ' +  themes[theme]['background'] + ';' : ''}">
   <div class="col-wide middle" class:center>
-		<a href="/" style="text-decoration:none;color:black;">
+		<a href="#" style="text-decoration:none;color:black;">
 			<picture>
 				<img src="./img/logo.jpg" alt="" style="height:40px;width:40px">
 			</picture>

@@ -99,7 +99,7 @@
 	function generate_cost_data(start_year, years, miles_per_year, new_car_price, car_cost_per_mile, zipcar_membership, zipcar_cost_per_mile, downtheblock_membership, downtheblock_cost_per_mile) {
 		let ret = []
 		for (let i=0; i < years; i ++){
-			ret.push({year: start_year+i, value: new_car_price+(i+1)*miles_per_year*car_cost_per_mile, group: 'New Car'})
+			ret.push({year: start_year+i, value: new_car_price+(i+1)*miles_per_year*car_cost_per_mile, group: 'Owning Car'})
 		}
 		
 		// for (let i=0; i < years; i ++){
@@ -337,7 +337,7 @@ import WordCloud from "svelte-d3-cloud";
 <Header bgimage="./img/bg-image4.jpg" bgfixed={true} theme="light" center={false} short={true}>
 	<h1>Bringing Better Carshare to Madison	</h1>
 	<p class="text-big" style="margin-top: 25px; background-color:rgba(204, 204, 204, 0.9);padding:1%;" >
-		We're building a new carshare solution so you can <a href="">save money</a>, help <a href="">build a better city</a>, and <a href="">protect the environment</a>, while getting where you need to go each day.
+		We're building a new carshare solution so you can <a href="#start">save money</a>, help <a href="#city">build a better city</a>, and <a href="#environment">protect the environment</a>, while getting where you need to go each day.
 	</p>
 	<!-- <p style="margin-top: 20px">
 		DD MMM YYYY
@@ -363,7 +363,8 @@ import WordCloud from "svelte-d3-cloud";
 </Filler> -->
 
 <Section>
-	<h2 id="start">Why Carshare? Save Money</h2>
+	<h2 id="start">Why Carshare?</h2>
+	<h3> Save Money</h3>
 	<p>
 		The average car owner spends $10,000 per year on their car<a href="https://www.moneygeek.com/insurance/auto/analysis/costs-of-car-ownership/"><sup>[1]</sup></a>.  And the typical car is sitting parked 95% of the time<a href="https://usa.streetsblog.org/2016/03/10/its-true-the-typical-car-is-parked-95-percent-of-the-time"><sup>[2]</sup></a>.
 	</p>
@@ -386,8 +387,8 @@ import WordCloud from "svelte-d3-cloud";
 						colors={colors.seq5}
 						yFormatTick={d=>'$'+d/1000 + 'k'}
 						line={true} area={false} areaOpacity={0.3}
-						title="Cost for owning your own car vs carshare after 10 years"
-						footer={"estimates from 2023 average prices, assuming "+mileage_choices[mileage_selected].val+" miles/year of travel"}
+						title="Cost of owning your own car vs using carshare"
+						footer={"estimated from 2023 average prices, assuming "+mileage_choices[mileage_selected].val+" miles/year of travel"}
 						legend={true}
 						{animation} labels
 						hover={true} select={false}
@@ -406,7 +407,7 @@ import WordCloud from "svelte-d3-cloud";
 		<section data-id="chart01">
 			<div class="col-medium">
 				<p>
-					This chart shows the <strong>expected cost</strong> of our carshare program compared to owning your own car and the leading carshare competitor Zipcar.
+					This chart shows the <strong>expected cost</strong> of our carshare program compared to owning your own car and the leading carshare competitor, Zipcar.
 				</p>
 			</div>
 		</section>
@@ -446,7 +447,8 @@ import WordCloud from "svelte-d3-cloud";
 <Divider/>
 
 <Section>
-	<h2 id="start">Why Carshare? Build a Better City</h2>
+	<h2 id="city">Why Carshare?</h2>
+	<h4> Build a Better City</h4>
 	<blockquote class="text-indent">
 		"I believe Madison is ready to accelerate climate action for the benefit of our community and our world."&mdash;Mayor Satya Rhodes-Conway
 	</blockquote>
@@ -470,7 +472,7 @@ import WordCloud from "svelte-d3-cloud";
 		<section data-id="image02">
 			<div class="col-medium">
 				<p>
-					As part of that future we are dedicated to revamping our city's infrastructure. But we can't do that without significant change to our assumptions about what it means to travel here.
+					As part of that future, we are dedicated to revamping our city's infrastructure. But we can't do that without significant change to our assumptions about what it means to get around Madison.
 				</p>
 			</div>
 		</section>
@@ -487,7 +489,8 @@ import WordCloud from "svelte-d3-cloud";
 <Divider/>
 
 <Section>
-	<h2 id="start">Why Carshare? Protect the Environment</h2>
+	<h2 id="environment">Why Carshare?</h2>
+	<h3> Protect the Environment</h3>
 	<blockquote class="text-indent">
 		"Car sharers emit between <strong>8%</strong> and <strong>13%</strong> less CO2 per person, per year. About half of this reduction can be
 		ascribed to less car use; the other half to the lower degree of car ownership."&mdash;Nijlin et al. 2015
@@ -575,7 +578,37 @@ import WordCloud from "svelte-d3-cloud";
 	<p>
 		We're working to make this future a possibility today!  You can help by taking a <a href="https://forms.gle/p8iJkaLSgSe5JEmA7">brief survey</a> to inform our site location plans, or you can sign up to our mailing list to receive updates when we roll out.
 	</p>
-	insert email signup form
+	<div id="mc_embed_shell">
+		<link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+	<style type="text/css">
+		  #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
+		  /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+			 We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+  </style>
+  <div id="mc_embed_signup">
+	  <form action="https://gmail.us10.list-manage.com/subscribe/post?u=e9495ad37d9ef1320b4e92a08&amp;id=fece0ca4d6&amp;f_id=0080d0e5f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+		  <div id="mc_embed_signup_scroll">
+			  <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+			  <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+		  <div id="mce-responses" class="clear foot">
+			  <div class="response" id="mce-error-response" style="display: none;"></div>
+			  <div class="response" id="mce-success-response" style="display: none;"></div>
+		  </div>
+	  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+		  /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+		  <input type="text" name="b_e9495ad37d9ef1320b4e92a08_fece0ca4d6" tabindex="-1" value="">
+	  </div>
+		  <div class="optionalParent">
+			  <div class="clear foot">
+				  <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+				  <!-- <p style="margin: 0px auto;"><a href="http://eepurl.com/iF1sSE" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p> -->
+			  </div>
+		  </div>
+	  </div>
+  </form>
+  </div>
+  <!-- <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div> -->
+  
 	<p>
 		If you are interested in joining our steering committee, you can email us at <a href="mailto:madison.carshare@gmail.com">madison.carshare@gmail.com</a>.
 	</p>

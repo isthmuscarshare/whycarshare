@@ -944,7 +944,7 @@ var app = (function () {
     			add_location(img, file, 13, 4, 450);
     			attr_dev(picture, "class", "svelte-1ly5odw");
     			add_location(picture, file, 12, 3, 436);
-    			attr_dev(a, "href", "/");
+    			attr_dev(a, "href", "#");
     			set_style(a, "text-decoration", "none");
     			set_style(a, "color", "black");
     			attr_dev(a, "class", "svelte-1ly5odw");
@@ -26711,14 +26711,14 @@ uniform `+P+" "+z+" u_"+k+`;
     			span1.textContent = "Sign up";
     			set_style(span0, "background-color", "rgba(204, 204, 204, 0.9)");
     			set_style(span0, "padding", "5px");
-    			add_location(span0, file$t, 350, 21, 10275);
+    			add_location(span0, file$t, 350, 21, 10301);
     			attr_dev(a0, "href", "#start");
-    			add_location(a0, file$t, 350, 4, 10258);
+    			add_location(a0, file$t, 350, 4, 10284);
     			set_style(span1, "background-color", "rgba(204, 204, 204, 0.9)");
     			set_style(span1, "padding", "5px");
-    			add_location(span1, file$t, 351, 22, 10391);
+    			add_location(span1, file$t, 351, 22, 10417);
     			attr_dev(a1, "href", "#signup");
-    			add_location(a1, file$t, 351, 4, 10373);
+    			add_location(a1, file$t, 351, 4, 10399);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, a0, anchor);
@@ -26791,21 +26791,21 @@ uniform `+P+" "+z+" u_"+k+`;
     			t9 = space();
     			div = element("div");
     			create_component(arrow.$$.fragment);
-    			add_location(h1, file$t, 337, 1, 9625);
-    			attr_dev(a0, "href", "");
-    			add_location(a0, file$t, 339, 52, 9826);
-    			attr_dev(a1, "href", "");
-    			add_location(a1, file$t, 339, 84, 9858);
-    			attr_dev(a2, "href", "");
-    			add_location(a2, file$t, 339, 124, 9898);
+    			add_location(h1, file$t, 337, 1, 9628);
+    			attr_dev(a0, "href", "#start");
+    			add_location(a0, file$t, 339, 52, 9829);
+    			attr_dev(a1, "href", "#city");
+    			add_location(a1, file$t, 339, 90, 9867);
+    			attr_dev(a2, "href", "#environment");
+    			add_location(a2, file$t, 339, 135, 9912);
     			attr_dev(p, "class", "text-big");
     			set_style(p, "margin-top", "25px");
     			set_style(p, "background-color", "rgba(204, 204, 204, 0.9)");
     			set_style(p, "padding", "1%");
-    			add_location(p, file$t, 338, 1, 9672);
+    			add_location(p, file$t, 338, 1, 9675);
     			set_style(div, "margin-top", "40px");
     			set_style(div, "text-align", "center");
-    			add_location(div, file$t, 347, 1, 10163);
+    			add_location(div, file$t, 347, 1, 10189);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -26866,65 +26866,75 @@ uniform `+P+" "+z+" u_"+k+`;
     function create_default_slot_7(ctx) {
     	let h2;
     	let t1;
+    	let h3;
+    	let t3;
     	let p0;
-    	let t2;
+    	let t4;
     	let a0;
     	let sup0;
-    	let t4;
+    	let t6;
     	let a1;
     	let sup1;
-    	let t6;
-    	let t7;
+    	let t8;
+    	let t9;
     	let p1;
 
     	const block = {
     		c: function create() {
     			h2 = element("h2");
-    			h2.textContent = "Why Carshare? Save Money";
+    			h2.textContent = "Why Carshare?";
     			t1 = space();
+    			h3 = element("h3");
+    			h3.textContent = "Save Money";
+    			t3 = space();
     			p0 = element("p");
-    			t2 = text("The average car owner spends $10,000 per year on their car");
+    			t4 = text("The average car owner spends $10,000 per year on their car");
     			a0 = element("a");
     			sup0 = element("sup");
     			sup0.textContent = "[1]";
-    			t4 = text(".  And the typical car is sitting parked 95% of the time");
+    			t6 = text(".  And the typical car is sitting parked 95% of the time");
     			a1 = element("a");
     			sup1 = element("sup");
     			sup1.textContent = "[2]";
-    			t6 = text(".");
-    			t7 = space();
+    			t8 = text(".");
+    			t9 = space();
     			p1 = element("p");
     			p1.textContent = "We're building a local-focused carshare program that will lower the cost of transportation for our members.";
     			attr_dev(h2, "id", "start");
-    			add_location(h2, file$t, 365, 1, 10687);
-    			add_location(sup0, file$t, 367, 144, 10881);
+    			add_location(h2, file$t, 365, 1, 10713);
+    			add_location(h3, file$t, 366, 1, 10748);
+    			add_location(sup0, file$t, 368, 144, 10918);
     			attr_dev(a0, "href", "https://www.moneygeek.com/insurance/auto/analysis/costs-of-car-ownership/");
-    			add_location(a0, file$t, 367, 60, 10797);
-    			add_location(sup1, file$t, 367, 325, 11062);
+    			add_location(a0, file$t, 368, 60, 10834);
+    			add_location(sup1, file$t, 368, 325, 11099);
     			attr_dev(a1, "href", "https://usa.streetsblog.org/2016/03/10/its-true-the-typical-car-is-parked-95-percent-of-the-time");
-    			add_location(a1, file$t, 367, 218, 10955);
-    			add_location(p0, file$t, 366, 1, 10733);
-    			add_location(p1, file$t, 369, 1, 11089);
+    			add_location(a1, file$t, 368, 218, 10992);
+    			add_location(p0, file$t, 367, 1, 10770);
+    			add_location(p1, file$t, 370, 1, 11126);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
     			insert_dev(target, t1, anchor);
+    			insert_dev(target, h3, anchor);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, p0, anchor);
-    			append_dev(p0, t2);
+    			append_dev(p0, t4);
     			append_dev(p0, a0);
     			append_dev(a0, sup0);
-    			append_dev(p0, t4);
+    			append_dev(p0, t6);
     			append_dev(p0, a1);
     			append_dev(a1, sup1);
-    			append_dev(p0, t6);
-    			insert_dev(target, t7, anchor);
+    			append_dev(p0, t8);
+    			insert_dev(target, t9, anchor);
     			insert_dev(target, p1, anchor);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h2);
     			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(h3);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(p0);
-    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(t9);
     			if (detaching) detach_dev(p1);
     		}
     	};
@@ -26940,7 +26950,7 @@ uniform `+P+" "+z+" u_"+k+`;
     	return block;
     }
 
-    // (378:1) 
+    // (379:1) 
     function create_background_slot_1(ctx) {
     	let div2;
     	let figure;
@@ -26969,8 +26979,8 @@ uniform `+P+" "+z+" u_"+k+`;
     		line: true,
     		area: false,
     		areaOpacity: 0.3,
-    		title: "Cost for owning your own car vs carshare after 10 years",
-    		footer: "estimates from 2023 average prices, assuming " + /*mileage_choices*/ ctx[7][/*mileage_selected*/ ctx[3]].val + " miles/year of travel",
+    		title: "Cost of owning your own car vs using carshare",
+    		footer: "estimated from 2023 average prices, assuming " + /*mileage_choices*/ ctx[7][/*mileage_selected*/ ctx[3]].val + " miles/year of travel",
     		legend: true,
     		animation: /*animation*/ ctx[6],
     		labels: true,
@@ -26999,12 +27009,12 @@ uniform `+P+" "+z+" u_"+k+`;
     			div0 = element("div");
     			create_component(linechart_1.$$.fragment);
     			attr_dev(div0, "class", "chart svelte-1l6r92a");
-    			add_location(div0, file$t, 380, 4, 11363);
+    			add_location(div0, file$t, 381, 4, 11400);
     			attr_dev(div1, "class", "col-wide");
-    			add_location(div1, file$t, 379, 3, 11336);
-    			add_location(figure, file$t, 378, 2, 11324);
+    			add_location(div1, file$t, 380, 3, 11373);
+    			add_location(figure, file$t, 379, 2, 11361);
     			attr_dev(div2, "slot", "background");
-    			add_location(div2, file$t, 377, 1, 11298);
+    			add_location(div2, file$t, 378, 1, 11335);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -27016,7 +27026,7 @@ uniform `+P+" "+z+" u_"+k+`;
     		},
     		p: function update(ctx, dirty) {
     			const linechart_1_changes = {};
-    			if (dirty[0] & /*mileage_selected*/ 8) linechart_1_changes.footer = "estimates from 2023 average prices, assuming " + /*mileage_choices*/ ctx[7][/*mileage_selected*/ ctx[3]].val + " miles/year of travel";
+    			if (dirty[0] & /*mileage_selected*/ 8) linechart_1_changes.footer = "estimated from 2023 average prices, assuming " + /*mileage_choices*/ ctx[7][/*mileage_selected*/ ctx[3]].val + " miles/year of travel";
 
     			if (!updating_data && dirty[0] & /*mydata, mileage_selected*/ 12) {
     				updating_data = true;
@@ -27051,14 +27061,14 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_background_slot_1.name,
     		type: "slot",
-    		source: "(378:1) ",
+    		source: "(379:1) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (434:7) {#each mileage_choices as m}
+    // (435:7) {#each mileage_choices as m}
     function create_each_block$9(ctx) {
     	let option;
     	let t0_value = /*m*/ ctx[54].val + "";
@@ -27073,7 +27083,7 @@ uniform `+P+" "+z+" u_"+k+`;
     			t1 = space();
     			option.__value = option_value_value = /*m*/ ctx[54].ind;
     			option.value = option.__value;
-    			add_location(option, file$t, 434, 8, 13230);
+    			add_location(option, file$t, 435, 8, 13258);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -27090,14 +27100,14 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_each_block$9.name,
     		type: "each",
-    		source: "(434:7) {#each mileage_choices as m}",
+    		source: "(435:7) {#each mileage_choices as m}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (405:1) 
+    // (406:1) 
     function create_foreground_slot_1(ctx) {
     	let div4;
     	let section0;
@@ -27142,7 +27152,7 @@ uniform `+P+" "+z+" u_"+k+`;
     			t0 = text("This chart shows the ");
     			strong = element("strong");
     			strong.textContent = "expected cost";
-    			t2 = text(" of our carshare program compared to owning your own car and the leading carshare competitor Zipcar.");
+    			t2 = text(" of our carshare program compared to owning your own car and the leading carshare competitor, Zipcar.");
     			t3 = space();
     			section1 = element("section");
     			div1 = element("div");
@@ -27169,34 +27179,34 @@ uniform `+P+" "+z+" u_"+k+`;
     				each_blocks[i].c();
     			}
 
-    			add_location(strong, file$t, 408, 26, 12357);
-    			add_location(p0, file$t, 407, 4, 12327);
+    			add_location(strong, file$t, 409, 26, 12384);
+    			add_location(p0, file$t, 408, 4, 12354);
     			attr_dev(div0, "class", "col-medium");
-    			add_location(div0, file$t, 406, 3, 12298);
+    			add_location(div0, file$t, 407, 3, 12325);
     			attr_dev(section0, "data-id", "chart01");
-    			add_location(section0, file$t, 405, 2, 12267);
-    			add_location(p1, file$t, 414, 4, 12582);
+    			add_location(section0, file$t, 406, 2, 12294);
+    			add_location(p1, file$t, 415, 4, 12610);
     			attr_dev(div1, "class", "col-medium");
-    			add_location(div1, file$t, 413, 3, 12553);
+    			add_location(div1, file$t, 414, 3, 12581);
     			attr_dev(section1, "data-id", "chart02");
-    			add_location(section1, file$t, 412, 2, 12522);
-    			add_location(p2, file$t, 421, 4, 12770);
+    			add_location(section1, file$t, 413, 2, 12550);
+    			add_location(p2, file$t, 422, 4, 12798);
     			attr_dev(div2, "class", "col-medium");
-    			add_location(div2, file$t, 420, 3, 12741);
+    			add_location(div2, file$t, 421, 3, 12769);
     			attr_dev(section2, "data-id", "chart03");
-    			add_location(section2, file$t, 419, 2, 12710);
-    			add_location(h3, file$t, 428, 4, 12950);
-    			add_location(p3, file$t, 429, 4, 12983);
+    			add_location(section2, file$t, 420, 2, 12738);
+    			add_location(h3, file$t, 429, 4, 12978);
+    			add_location(p3, file$t, 430, 4, 13011);
     			attr_dev(select, "class", "svelte-1l6r92a");
     			if (/*mileage_selected*/ ctx[3] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[12].call(select));
-    			add_location(select, file$t, 432, 6, 13147);
-    			add_location(p4, file$t, 430, 5, 13091);
+    			add_location(select, file$t, 433, 6, 13175);
+    			add_location(p4, file$t, 431, 5, 13119);
     			attr_dev(div3, "class", "col-medium");
-    			add_location(div3, file$t, 427, 3, 12921);
+    			add_location(div3, file$t, 428, 3, 12949);
     			attr_dev(section3, "data-id", "chart05");
-    			add_location(section3, file$t, 426, 2, 12890);
+    			add_location(section3, file$t, 427, 2, 12918);
     			attr_dev(div4, "slot", "foreground");
-    			add_location(div4, file$t, 404, 1, 12241);
+    			add_location(div4, file$t, 405, 1, 12268);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div4, anchor);
@@ -27276,39 +27286,49 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_foreground_slot_1.name,
     		type: "slot",
-    		source: "(405:1) ",
+    		source: "(406:1) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (448:0) <Section>
+    // (449:0) <Section>
     function create_default_slot_5(ctx) {
     	let h2;
     	let t1;
+    	let h4;
+    	let t3;
     	let blockquote;
 
     	const block = {
     		c: function create() {
     			h2 = element("h2");
-    			h2.textContent = "Why Carshare? Build a Better City";
+    			h2.textContent = "Why Carshare?";
     			t1 = space();
+    			h4 = element("h4");
+    			h4.textContent = "Build a Better City";
+    			t3 = space();
     			blockquote = element("blockquote");
     			blockquote.textContent = "\"I believe Madison is ready to accelerate climate action for the benefit of our community and our world.\"—Mayor Satya Rhodes-Conway";
-    			attr_dev(h2, "id", "start");
-    			add_location(h2, file$t, 448, 1, 13396);
+    			attr_dev(h2, "id", "city");
+    			add_location(h2, file$t, 449, 1, 13424);
+    			add_location(h4, file$t, 450, 1, 13458);
     			attr_dev(blockquote, "class", "text-indent");
-    			add_location(blockquote, file$t, 449, 1, 13451);
+    			add_location(blockquote, file$t, 451, 1, 13489);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
     			insert_dev(target, t1, anchor);
+    			insert_dev(target, h4, anchor);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, blockquote, anchor);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h2);
     			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(h4);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(blockquote);
     		}
     	};
@@ -27317,14 +27337,14 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(448:0) <Section>",
+    		source: "(449:0) <Section>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (456:1) 
+    // (458:1) 
     function create_background_slot(ctx) {
     	let div1;
     	let div0;
@@ -27342,11 +27362,11 @@ uniform `+P+" "+z+" u_"+k+`;
     			set_style(img, "height", "100vh");
     			set_style(img, "transition", "all .3s ease-in-out");
     			set_style(img, "opacity", /*image_opacity*/ ctx[4]);
-    			add_location(img, file$t, 457, 3, 13777);
+    			add_location(img, file$t, 459, 3, 13815);
     			attr_dev(div0, "class", "col-full height-full image-container svelte-1l6r92a");
-    			add_location(div0, file$t, 456, 2, 13723);
+    			add_location(div0, file$t, 458, 2, 13761);
     			attr_dev(div1, "slot", "background");
-    			add_location(div1, file$t, 455, 1, 13697);
+    			add_location(div1, file$t, 457, 1, 13735);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -27367,14 +27387,14 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_background_slot.name,
     		type: "slot",
-    		source: "(456:1) ",
+    		source: "(458:1) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (462:1) 
+    // (464:1) 
     function create_foreground_slot(ctx) {
     	let div3;
     	let section0;
@@ -27406,31 +27426,31 @@ uniform `+P+" "+z+" u_"+k+`;
     			section1 = element("section");
     			div1 = element("div");
     			p1 = element("p");
-    			p1.textContent = "As part of that future we are dedicated to revamping our city's infrastructure. But we can't do that without significant change to our assumptions about what it means to travel here.";
+    			p1.textContent = "As part of that future, we are dedicated to revamping our city's infrastructure. But we can't do that without significant change to our assumptions about what it means to get around Madison.";
     			t5 = space();
     			section2 = element("section");
     			div2 = element("div");
     			p2 = element("p");
     			p2.textContent = "Switching to carshare helps makes alternatives like transit and cycling more appealing and frees up parking space in our city for gardens, housing, and countless amenities.";
     			attr_dev(a, "href", "https://fox47.com/news/local/results-of-lake-monona-waterfront-survey-shows-slight-preference-for-bold-redesign");
-    			add_location(a, file$t, 465, 163, 14235);
-    			add_location(p0, file$t, 464, 4, 14068);
+    			add_location(a, file$t, 467, 163, 14273);
+    			add_location(p0, file$t, 466, 4, 14106);
     			attr_dev(div0, "class", "col-medium");
-    			add_location(div0, file$t, 463, 3, 14039);
+    			add_location(div0, file$t, 465, 3, 14077);
     			attr_dev(section0, "data-id", "image01");
-    			add_location(section0, file$t, 462, 2, 14008);
-    			add_location(p1, file$t, 471, 4, 14497);
+    			add_location(section0, file$t, 464, 2, 14046);
+    			add_location(p1, file$t, 473, 4, 14535);
     			attr_dev(div1, "class", "col-medium");
-    			add_location(div1, file$t, 470, 3, 14468);
+    			add_location(div1, file$t, 472, 3, 14506);
     			attr_dev(section1, "data-id", "image02");
-    			add_location(section1, file$t, 469, 2, 14437);
-    			add_location(p2, file$t, 478, 4, 14783);
+    			add_location(section1, file$t, 471, 2, 14475);
+    			add_location(p2, file$t, 480, 4, 14829);
     			attr_dev(div2, "class", "col-medium");
-    			add_location(div2, file$t, 477, 3, 14754);
+    			add_location(div2, file$t, 479, 3, 14800);
     			attr_dev(section2, "data-id", "image03");
-    			add_location(section2, file$t, 476, 2, 14723);
+    			add_location(section2, file$t, 478, 2, 14769);
     			attr_dev(div3, "slot", "foreground");
-    			add_location(div3, file$t, 461, 1, 13982);
+    			add_location(div3, file$t, 463, 1, 14020);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div3, anchor);
@@ -27458,57 +27478,67 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_foreground_slot.name,
     		type: "slot",
-    		source: "(462:1) ",
+    		source: "(464:1) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (489:0) <Section>
+    // (491:0) <Section>
     function create_default_slot_4(ctx) {
     	let h2;
     	let t1;
+    	let h3;
+    	let t3;
     	let blockquote;
-    	let t2;
-    	let strong0;
     	let t4;
-    	let strong1;
+    	let strong0;
     	let t6;
+    	let strong1;
+    	let t8;
 
     	const block = {
     		c: function create() {
     			h2 = element("h2");
-    			h2.textContent = "Why Carshare? Protect the Environment";
+    			h2.textContent = "Why Carshare?";
     			t1 = space();
+    			h3 = element("h3");
+    			h3.textContent = "Protect the Environment";
+    			t3 = space();
     			blockquote = element("blockquote");
-    			t2 = text("\"Car sharers emit between ");
+    			t4 = text("\"Car sharers emit between ");
     			strong0 = element("strong");
     			strong0.textContent = "8%";
-    			t4 = text(" and ");
+    			t6 = text(" and ");
     			strong1 = element("strong");
     			strong1.textContent = "13%";
-    			t6 = text(" less CO2 per person, per year. About half of this reduction can be\n\t\tascribed to less car use; the other half to the lower degree of car ownership.\"—Nijlin et al. 2015");
-    			attr_dev(h2, "id", "start");
-    			add_location(h2, file$t, 489, 1, 15041);
-    			add_location(strong0, file$t, 491, 28, 15161);
-    			add_location(strong1, file$t, 491, 52, 15185);
+    			t8 = text(" less CO2 per person, per year. About half of this reduction can be\n\t\tascribed to less car use; the other half to the lower degree of car ownership.\"—Nijlin et al. 2015");
+    			attr_dev(h2, "id", "environment");
+    			add_location(h2, file$t, 491, 1, 15087);
+    			add_location(h3, file$t, 492, 1, 15128);
+    			add_location(strong0, file$t, 494, 28, 15224);
+    			add_location(strong1, file$t, 494, 52, 15248);
     			attr_dev(blockquote, "class", "text-indent");
-    			add_location(blockquote, file$t, 490, 1, 15100);
+    			add_location(blockquote, file$t, 493, 1, 15163);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
     			insert_dev(target, t1, anchor);
+    			insert_dev(target, h3, anchor);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, blockquote, anchor);
-    			append_dev(blockquote, t2);
-    			append_dev(blockquote, strong0);
     			append_dev(blockquote, t4);
-    			append_dev(blockquote, strong1);
+    			append_dev(blockquote, strong0);
     			append_dev(blockquote, t6);
+    			append_dev(blockquote, strong1);
+    			append_dev(blockquote, t8);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h2);
     			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(h3);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(blockquote);
     		}
     	};
@@ -27517,14 +27547,14 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_default_slot_4.name,
     		type: "slot",
-    		source: "(489:0) <Section>",
+    		source: "(491:0) <Section>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (507:0) <Section>
+    // (510:0) <Section>
     function create_default_slot_3$3(ctx) {
     	let h2;
     	let t1;
@@ -27577,20 +27607,20 @@ uniform `+P+" "+z+" u_"+k+`;
     			t6 = space();
     			p1 = element("p");
     			p1.textContent = "Our service offers all the convenience of a car, with none of the cost, maintenance, parking or environmental guilt.";
-    			add_location(h2, file$t, 508, 1, 15630);
-    			add_location(p0, file$t, 509, 1, 15658);
+    			add_location(h2, file$t, 511, 1, 15693);
+    			add_location(p0, file$t, 512, 1, 15721);
     			attr_dev(div0, "class", "chart svelte-1l6r92a");
     			set_style(div0, "margin-left", "50px");
     			set_style(div0, "overflow", "scroll");
-    			add_location(div0, file$t, 514, 3, 15891);
+    			add_location(div0, file$t, 517, 3, 15954);
     			attr_dev(div1, "class", "col-wide");
     			set_style(div1, "width", "98%");
-    			add_location(div1, file$t, 513, 2, 15846);
+    			add_location(div1, file$t, 516, 2, 15909);
     			attr_dev(figcaption, "class", "svelte-1l6r92a");
-    			add_location(figcaption, file$t, 518, 2, 16055);
+    			add_location(figcaption, file$t, 521, 2, 16118);
     			attr_dev(figure, "class", "myfigure svelte-1l6r92a");
-    			add_location(figure, file$t, 512, 1, 15818);
-    			add_location(p1, file$t, 520, 1, 16158);
+    			add_location(figure, file$t, 515, 1, 15881);
+    			add_location(p1, file$t, 523, 1, 16221);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -27643,14 +27673,14 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_default_slot_3$3.name,
     		type: "slot",
-    		source: "(507:0) <Section>",
+    		source: "(510:0) <Section>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (533:0) <Section>
+    // (536:0) <Section>
     function create_default_slot_2$3(ctx) {
     	let h2;
     	let t1;
@@ -27663,8 +27693,8 @@ uniform `+P+" "+z+" u_"+k+`;
     			t1 = space();
     			p = element("p");
     			p.textContent = "We plan to roll out our offering to a selection of targeted neighborhoods throughout the city.";
-    			add_location(h2, file$t, 533, 1, 16329);
-    			add_location(p, file$t, 534, 1, 16374);
+    			add_location(h2, file$t, 536, 1, 16392);
+    			add_location(p, file$t, 537, 1, 16437);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -27682,14 +27712,14 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_default_slot_2$3.name,
     		type: "slot",
-    		source: "(533:0) <Section>",
+    		source: "(536:0) <Section>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (573:0) <Section>
+    // (576:0) <Section>
     function create_default_slot$3(ctx) {
     	let h2;
     	let t1;
@@ -27698,10 +27728,41 @@ uniform `+P+" "+z+" u_"+k+`;
     	let a0;
     	let t4;
     	let t5;
-    	let p1;
+    	let div10;
+    	let link;
     	let t6;
-    	let a1;
+    	let style;
     	let t8;
+    	let div9;
+    	let form;
+    	let div8;
+    	let div0;
+    	let span0;
+    	let t10;
+    	let t11;
+    	let div1;
+    	let label;
+    	let t12;
+    	let span1;
+    	let input0;
+    	let t14;
+    	let div4;
+    	let div2;
+    	let t15;
+    	let div3;
+    	let t16;
+    	let div5;
+    	let t17;
+    	let input1;
+    	let t18;
+    	let div7;
+    	let div6;
+    	let input2;
+    	let t19;
+    	let p1;
+    	let t20;
+    	let a1;
+    	let t22;
 
     	const block = {
     		c: function create() {
@@ -27713,20 +27774,120 @@ uniform `+P+" "+z+" u_"+k+`;
     			a0 = element("a");
     			a0.textContent = "brief survey";
     			t4 = text(" to inform our site location plans, or you can sign up to our mailing list to receive updates when we roll out.");
-    			t5 = text("\n\tinsert email signup form\n\t");
+    			t5 = space();
+    			div10 = element("div");
+    			link = element("link");
+    			t6 = space();
+    			style = element("style");
+    			style.textContent = "#mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}\n\t\t  /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.\n\t\t\t We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */";
+    			t8 = space();
+    			div9 = element("div");
+    			form = element("form");
+    			div8 = element("div");
+    			div0 = element("div");
+    			span0 = element("span");
+    			span0.textContent = "*";
+    			t10 = text(" indicates required");
+    			t11 = space();
+    			div1 = element("div");
+    			label = element("label");
+    			t12 = text("Email Address ");
+    			span1 = element("span");
+    			span1.textContent = "*";
+    			input0 = element("input");
+    			t14 = space();
+    			div4 = element("div");
+    			div2 = element("div");
+    			t15 = space();
+    			div3 = element("div");
+    			t16 = space();
+    			div5 = element("div");
+    			t17 = text("/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */\n\t\t  ");
+    			input1 = element("input");
+    			t18 = space();
+    			div7 = element("div");
+    			div6 = element("div");
+    			input2 = element("input");
+    			t19 = space();
     			p1 = element("p");
-    			t6 = text("If you are interested in joining our steering committee, you can email us at ");
+    			t20 = text("If you are interested in joining our steering committee, you can email us at ");
     			a1 = element("a");
     			a1.textContent = "madison.carshare@gmail.com";
-    			t8 = text(".");
+    			t22 = text(".");
     			attr_dev(h2, "id", "signup");
-    			add_location(h2, file$t, 573, 1, 17210);
+    			add_location(h2, file$t, 576, 1, 17273);
     			attr_dev(a0, "href", "https://forms.gle/p8iJkaLSgSe5JEmA7");
-    			add_location(a0, file$t, 575, 83, 17327);
-    			add_location(p0, file$t, 574, 1, 17240);
+    			add_location(a0, file$t, 578, 83, 17390);
+    			add_location(p0, file$t, 577, 1, 17303);
+    			attr_dev(link, "href", "//cdn-images.mailchimp.com/embedcode/classic-061523.css");
+    			attr_dev(link, "rel", "stylesheet");
+    			attr_dev(link, "type", "text/css");
+    			add_location(link, file$t, 581, 2, 17599);
+    			attr_dev(style, "type", "text/css");
+    			add_location(style, file$t, 582, 1, 17703);
+    			attr_dev(span0, "class", "asterisk");
+    			add_location(span0, file$t, 590, 37, 18394);
+    			attr_dev(div0, "class", "indicates-required");
+    			add_location(div0, file$t, 590, 5, 18362);
+    			attr_dev(span1, "class", "asterisk");
+    			add_location(span1, file$t, 591, 70, 18521);
+    			attr_dev(label, "for", "mce-EMAIL");
+    			add_location(label, file$t, 591, 33, 18484);
+    			attr_dev(input0, "type", "email");
+    			attr_dev(input0, "name", "EMAIL");
+    			attr_dev(input0, "class", "required email");
+    			attr_dev(input0, "id", "mce-EMAIL");
+    			input0.required = "";
+    			input0.value = "";
+    			add_location(input0, file$t, 591, 109, 18560);
+    			attr_dev(div1, "class", "mc-field-group");
+    			add_location(div1, file$t, 591, 5, 18456);
+    			attr_dev(div2, "class", "response");
+    			attr_dev(div2, "id", "mce-error-response");
+    			set_style(div2, "display", "none");
+    			add_location(div2, file$t, 593, 5, 18712);
+    			attr_dev(div3, "class", "response");
+    			attr_dev(div3, "id", "mce-success-response");
+    			set_style(div3, "display", "none");
+    			add_location(div3, file$t, 594, 5, 18793);
+    			attr_dev(div4, "id", "mce-responses");
+    			attr_dev(div4, "class", "clear foot");
+    			add_location(div4, file$t, 592, 4, 18663);
+    			attr_dev(input1, "type", "text");
+    			attr_dev(input1, "name", "b_e9495ad37d9ef1320b4e92a08_fece0ca4d6");
+    			attr_dev(input1, "tabindex", "-1");
+    			input1.value = "";
+    			add_location(input1, file$t, 598, 4, 19072);
+    			set_style(div5, "position", "absolute");
+    			set_style(div5, "left", "-5000px");
+    			attr_dev(div5, "aria-hidden", "true");
+    			add_location(div5, file$t, 596, 3, 18885);
+    			attr_dev(input2, "type", "submit");
+    			attr_dev(input2, "name", "subscribe");
+    			attr_dev(input2, "id", "mc-embedded-subscribe");
+    			attr_dev(input2, "class", "button");
+    			input2.value = "Subscribe";
+    			add_location(input2, file$t, 602, 6, 19240);
+    			attr_dev(div6, "class", "clear foot");
+    			add_location(div6, file$t, 601, 5, 19209);
+    			attr_dev(div7, "class", "optionalParent");
+    			add_location(div7, file$t, 600, 4, 19175);
+    			attr_dev(div8, "id", "mc_embed_signup_scroll");
+    			add_location(div8, file$t, 589, 4, 18323);
+    			attr_dev(form, "action", "https://gmail.us10.list-manage.com/subscribe/post?u=e9495ad37d9ef1320b4e92a08&id=fece0ca4d6&f_id=0080d0e5f0");
+    			attr_dev(form, "method", "post");
+    			attr_dev(form, "id", "mc-embedded-subscribe-form");
+    			attr_dev(form, "name", "mc-embedded-subscribe-form");
+    			attr_dev(form, "class", "validate");
+    			attr_dev(form, "target", "_blank");
+    			add_location(form, file$t, 588, 3, 18074);
+    			attr_dev(div9, "id", "mc_embed_signup");
+    			add_location(div9, file$t, 587, 2, 18044);
     			attr_dev(a1, "href", "mailto:madison.carshare@gmail.com");
-    			add_location(a1, file$t, 579, 79, 17617);
-    			add_location(p1, file$t, 578, 1, 17534);
+    			add_location(a1, file$t, 612, 79, 20502);
+    			add_location(p1, file$t, 611, 1, 20419);
+    			attr_dev(div10, "id", "mc_embed_shell");
+    			add_location(div10, file$t, 580, 1, 17571);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h2, anchor);
@@ -27736,17 +27897,48 @@ uniform `+P+" "+z+" u_"+k+`;
     			append_dev(p0, a0);
     			append_dev(p0, t4);
     			insert_dev(target, t5, anchor);
-    			insert_dev(target, p1, anchor);
-    			append_dev(p1, t6);
+    			insert_dev(target, div10, anchor);
+    			append_dev(div10, link);
+    			append_dev(div10, t6);
+    			append_dev(div10, style);
+    			append_dev(div10, t8);
+    			append_dev(div10, div9);
+    			append_dev(div9, form);
+    			append_dev(form, div8);
+    			append_dev(div8, div0);
+    			append_dev(div0, span0);
+    			append_dev(div0, t10);
+    			append_dev(div8, t11);
+    			append_dev(div8, div1);
+    			append_dev(div1, label);
+    			append_dev(label, t12);
+    			append_dev(label, span1);
+    			append_dev(div1, input0);
+    			append_dev(div8, t14);
+    			append_dev(div8, div4);
+    			append_dev(div4, div2);
+    			append_dev(div4, t15);
+    			append_dev(div4, div3);
+    			append_dev(div8, t16);
+    			append_dev(div8, div5);
+    			append_dev(div5, t17);
+    			append_dev(div5, input1);
+    			append_dev(div8, t18);
+    			append_dev(div8, div7);
+    			append_dev(div7, div6);
+    			append_dev(div6, input2);
+    			append_dev(div10, t19);
+    			append_dev(div10, p1);
+    			append_dev(p1, t20);
     			append_dev(p1, a1);
-    			append_dev(p1, t8);
+    			append_dev(p1, t22);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h2);
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(p0);
     			if (detaching) detach_dev(t5);
-    			if (detaching) detach_dev(p1);
+    			if (detaching) detach_dev(div10);
     		}
     	};
 
@@ -27754,7 +27946,7 @@ uniform `+P+" "+z+" u_"+k+`;
     		block,
     		id: create_default_slot$3.name,
     		type: "slot",
-    		source: "(573:0) <Section>",
+    		source: "(576:0) <Section>",
     		ctx
     	});
 
@@ -27989,11 +28181,11 @@ uniform `+P+" "+z+" u_"+k+`;
     			create_component(onsfooter.$$.fragment);
     			if (!src_url_equal(iframe.src, iframe_src_value = "https://stedn.github.io/down-the-block/map_route_popups/map_route_popups.html")) attr_dev(iframe, "src", iframe_src_value);
     			attr_dev(iframe, "onload", "this.width=screen.width;this.height=0.8*screen.height;");
-    			add_location(iframe, file$t, 543, 3, 16564);
+    			add_location(iframe, file$t, 546, 3, 16627);
     			attr_dev(div0, "class", "col-full height-full");
-    			add_location(div0, file$t, 542, 2, 16524);
-    			add_location(figure, file$t, 541, 1, 16513);
-    			add_location(div1, file$t, 540, 0, 16505);
+    			add_location(div0, file$t, 545, 2, 16587);
+    			add_location(figure, file$t, 544, 1, 16576);
+    			add_location(div1, file$t, 543, 0, 16568);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -28249,7 +28441,7 @@ uniform `+P+" "+z+" u_"+k+`;
     		ret.push({
     			year: start_year + i,
     			value: new_car_price + (i + 1) * miles_per_year * car_cost_per_mile,
-    			group: 'New Car'
+    			group: 'Owning Car'
     		});
     	}
 
