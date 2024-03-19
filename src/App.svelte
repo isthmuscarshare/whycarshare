@@ -111,7 +111,7 @@
 		}
 	
 		for (let i=0; i < years; i ++){
-			ret.push({year: start_year+i, value: downtheblock_membership+ (i+1)*(miles_per_year*downtheblock_cost_per_mile), group: 'Down The Block'})
+			ret.push({year: start_year+i, value: downtheblock_membership+ (i+1)*(miles_per_year*downtheblock_cost_per_mile), group: 'Isthmus Carshare'})
 		}
 		return ret
 	}
@@ -208,7 +208,7 @@
 				selected_chart="New Car";
 			},
 			chart03: () => {
-				selected_chart="Down The Block";
+				selected_chart="Isthmus Carshare";
 			},
 			chart04: () => {
 				selected_chart = null;
@@ -421,7 +421,7 @@ import WordCloud from "svelte-d3-cloud";
 		<section data-id="chart03">
 			<div class="col-medium">
 				<p>
-					Meanwhile, our offering at Down The Block carshare is substantially cheaper.
+					Meanwhile, our offering at Isthmus Carshare is substantially cheaper.
 				</p>
 			</div>
 		</section>
@@ -534,9 +534,11 @@ import WordCloud from "svelte-d3-cloud";
 
 
 <Section>
-	<h2>Getting around with Down the Block</h2>
+	<h2>Getting around with Isthmus Carshare</h2>
 	<p>
-		We plan to roll out our offering to a selection of targeted neighborhoods throughout the city.
+		We plan to roll out our offering to a selection of targeted neighborhoods throughout the city, 
+		beginning Spring 2024 with the Tenney-Lapham neighborhood. Play around with the cost estimator tool below to 
+		imagine common trips you would take and see how our price plan compares to others!
 	</p>
 </Section>
 <Divider />
@@ -610,7 +612,7 @@ import WordCloud from "svelte-d3-cloud";
   <!-- <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div> -->
   
 	<p>
-		If you are interested in joining our steering committee, you can email us at <a href="mailto:madison.carshare@gmail.com">madison.carshare@gmail.com</a>.
+		For other inquiries or if you are interested in helping out, you can email us at <a href="mailto:madison.carshare@gmail.com">madison.carshare@gmail.com</a>.
 	</p>
 </Section>
 
