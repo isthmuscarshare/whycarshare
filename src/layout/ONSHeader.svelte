@@ -13,7 +13,7 @@
 			<picture>
 				<img src="./img/logo.jpg" alt="" style="height:40px;width:40px">
 			</picture>
-			Down The Block Carshare
+			Isthmus Carshare Cooperative
 		</a>
   </div>
 </nav>
