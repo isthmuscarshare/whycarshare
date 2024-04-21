@@ -101,15 +101,15 @@
 		for (let i=0; i < years; i ++){
 			ret.push({year: start_year+i, value: new_car_price+(i+1)*miles_per_year*car_cost_per_mile, group: 'Owning Car'})
 		}
-		
+
 		// for (let i=0; i < years; i ++){
 		// 	ret.push({year: start_year+i, value: used_car_price+(i+1)*miles_per_year*car_cost_per_mile, group: 'used car price'})
 		// }
-	
+
 		for (let i=0; i < years; i ++){
 			ret.push({year: start_year+i, value: (i+1)*(zipcar_membership+miles_per_year*zipcar_cost_per_mile), group: 'Zipcar'})
 		}
-	
+
 		for (let i=0; i < years; i ++){
 			ret.push({year: start_year+i, value: downtheblock_membership+ (i+1)*(miles_per_year*downtheblock_cost_per_mile), group: 'Isthmus Carshare'})
 		}
@@ -299,14 +299,14 @@
 					});
 				});
 			});
-			data[geo].timeseries = timeseries;	
+			data[geo].timeseries = timeseries;
 		});
 	});
-	
+
 	getTopo(topojson)
 	.then(geo => {
 		// geo.features.sort((a, b) => a.properties.AREANM.localeCompare(b.properties.AREANM));
-		
+
 		geojson = geo;
 		let vals = geojson['features'].map(d => d.properties['B08201001']).sort((a, b) => a - b);
 		let len = vals.length;
@@ -322,7 +322,7 @@
 			subdata.push({'geoid':d.properties.geoid,
 						  'color': getColor(d.properties['B08201001'], breaks, colors.seq5)})
 		});
-		
+
 	});
 
 import WordCloud from "svelte-d3-cloud";
@@ -346,13 +346,13 @@ import WordCloud from "svelte-d3-cloud";
 		<Toggle label="Animation {animation ? 'on' : 'off'}" mono={true} bind:checked={animation}/>
 	</p> -->
 	<div style="margin-top: 40px; text-align:center;">
-		
+
 			<Arrow color="white" {animation}>
 				<a href="#start"><span style="background-color:rgba(204, 204, 204, 0.9);padding:5px;">Why carshare?</span></a>
 				<a href="#signup"><span style="background-color:rgba(204, 204, 204, 0.9);padding:5px;">Sign up</span></a>
 			</Arrow>
-		
-		
+
+
 	</div>
 </Header>
 
@@ -508,7 +508,7 @@ import WordCloud from "svelte-d3-cloud";
 
 
 <Section>
-	
+
 	<h2>Madison is Ready!</h2>
 	<p>
 		We recently surveyed our Madison neighbors and found that they are ready to take action and change the way we are dependent on cars to get around.
@@ -524,7 +524,7 @@ import WordCloud from "svelte-d3-cloud";
 	<p>
 		Our service offers all the convenience of a car, with none of the cost, maintenance, parking or environmental guilt.
 	</p>
-	
+
 </Section>
 
 
@@ -536,8 +536,8 @@ import WordCloud from "svelte-d3-cloud";
 <Section>
 	<h2>Getting around with Isthmus Carshare</h2>
 	<p>
-		We plan to roll out our offering to a selection of targeted neighborhoods throughout the city, 
-		beginning Spring 2024 with the Tenney-Lapham neighborhood. Play around with the cost estimator tool below to 
+		We plan to roll out our offering to a selection of targeted neighborhoods throughout the city,
+		beginning Spring 2024 with the Tenney-Lapham neighborhood. Play around with the cost estimator tool below to
 		imagine common trips you would take and see how our price plan compares to others!
 	</p>
 </Section>
@@ -545,13 +545,13 @@ import WordCloud from "svelte-d3-cloud";
 
 <div >
 	<figure>
-		<div class="col-full height-full">  
-			<iframe src="https://stedn.github.io/down-the-block/map_route_popups/map_route_popups.html" onload="this.width=screen.width;this.height=0.8*screen.height;"></iframe>
+		<div class="col-full height-full">
+			<iframe src="https://isthmuscarshare.github.io/whycarshare/map_route_popups/map_route_popups.html" onload="this.width=screen.width;this.height=0.8*screen.height;"></iframe>
 		</div>
 	</figure>
 </div>
 <Scroller {threshold} bind:id={id['map']}>
-	
+
 
 	<!-- <div slot="foreground">
 		<section data-id="map01">
@@ -564,11 +564,11 @@ import WordCloud from "svelte-d3-cloud";
 		<section data-id="map02">
 			<div class="col-medium">
 				<p>
-					We're looking to 
+					We're looking to
 				</p>
 			</div>
 		</section>
-		
+
 	</div> -->
 </Scroller>
 
@@ -610,7 +610,7 @@ import WordCloud from "svelte-d3-cloud";
   </form>
   </div>
   <!-- <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div> -->
-  
+
 	<p>
 		For other inquiries or if you are interested in helping out, you can email us at <a href="mailto:madison.carshare@gmail.com">madison.carshare@gmail.com</a>.
 	</p>
@@ -721,7 +721,7 @@ import WordCloud from "svelte-d3-cloud";
 	.image-container {
 	background: url(https://stedn.github.io/down-the-block/public/img/utopia1.jpg) center center no-repeat;
 	background-size: 100% 100vh;
-	
+
 	-webkit-transition: all .3s ease-in-out;
 	-moz-transition: all .3s ease-in-out;
 	transition: all .3s ease-in-out;
